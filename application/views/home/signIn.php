@@ -20,7 +20,7 @@
 							
 				<div class="logovanje">
 							<?php echo validation_errors();?>
-                            <?php echo form_open('LoginController/checkLogin');?>
+                            <?php echo form_open('UserController/checkLogin');?>
 							
 				    <h1>Login or Register</h1>
 				    <p>
