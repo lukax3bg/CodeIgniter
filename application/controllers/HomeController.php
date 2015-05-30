@@ -13,6 +13,10 @@ class HomeController extends CI_Controller {
 	public function signUp() {
 		$this->load->view('home/signUp');
 	}
+	
+	public function homepage() {
+		$this->load->view('home/homepage');
+	}
 }
 
 ?>
