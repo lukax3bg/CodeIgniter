@@ -58,7 +58,7 @@ class User_Model extends CI_Model {
 		{
 			$idUser=$row['idUser'];
 			$pass = $row['password'];
-			echo $idUser;
+			
 			if($pass == $password)
 			{
 				session_start();

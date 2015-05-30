@@ -28,7 +28,7 @@ class LoginController extends CI_Controller {
         public function verifyUser() {
             $name=$this->input->post('username');
             $pass=$this->input->post('password');
-            echo $name;
+            
             $this->load->model('User_Model', 'user');
             //echo $this->user->login($name,$pass);
 			//return;
