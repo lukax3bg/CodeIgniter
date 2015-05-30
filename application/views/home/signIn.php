@@ -9,8 +9,12 @@
 
 
 
-<body background="<?php echo base_url()."/assets/images/psi.jpg"; ?>" width="100%" height="100%">
-
+<body>
+<div id="bg">
+	<img src="<?php echo base_url()."/assets/images/psi.jpg"; ?>" width="100%" height="100%" style="position: fixed; top: 0px; left: 0px;">
+</div>
+<div id="container">
+	
 
 			<section class="main">
 							
@@ -33,6 +37,6 @@
 				    </p>       
 				</div>
 			</section>
- 
+ </div>
  </body>
  </html>
