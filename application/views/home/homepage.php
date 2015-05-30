@@ -18,7 +18,7 @@
 			
 			
 			<section class="main">
-					<?php echo validation_errors();?>		
+							
 				<div class="logovanje">
 						
                         <?php echo form_open('UserController/checkLogin');?>	
@@ -72,7 +72,7 @@
 				        <input type="submit" name="signup" value="sign up">
 				    </p>       
 				</div>
-				
+				<?php echo validation_errors();?>
 			</section>
 			
 			
