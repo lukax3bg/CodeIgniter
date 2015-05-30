@@ -18,9 +18,10 @@
 			
 			
 			<section class="main">
-							
+					<?php echo validation_errors();?>		
 				<div class="logovanje">
-							
+						
+                        <?php echo form_open('UserController/checkLogin');?>	
 							
 				    <h1>Login</h1>
 				    <p>
@@ -33,8 +34,9 @@
 				    </p>
 
 				    <p>
-				        <input type="submit" name="submit" value="sign in">
-				    </p>       
+				        <input type="submit" name="signin" value="sign in">
+				    </p>
+					</form>					
 				</div>
 			</section>
 			
@@ -43,20 +45,21 @@
 			<section class="main">
 							
 				<div class="logovanje">
-							
+						
+                        <?php echo form_open('UserController/register');?>	
 							
 				    <h1>Register</h1>
 				    <p>
 				        <label for="login">Username</label>
-				        <input type="text" placeholder="username" name="username" >
+				        <input type="text" placeholder="username" name="usernameR" >
 				    </p>
 					 <p>
 				        <label for="password">Password</label>
-				        <input type="password" placeholder="password" name="password"> 
+				        <input type="password" placeholder="password" name="passwordR"> 
 				    </p>
 					<p>
-				        <label for="login">Repeat password</label>
-				        <input type="text" placeholder="re-password" name="re-password" >
+				        <label for="password">Repeat password</label>
+				        <input type="password" placeholder="re-password" name="re-password" >
 				    </p>
 					<p>
 				        <label for="login">E-mail</label>
@@ -65,9 +68,11 @@
 				   
 
 				    <p>
-				        <input type="submit" name="submit" value="sign up">
+					
+				        <input type="submit" name="signup" value="sign up">
 				    </p>       
 				</div>
+				
 			</section>
 			
 			

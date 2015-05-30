@@ -13,24 +13,24 @@ class RegisterController extends CI_Controller {
        
       $this->load->helper('security');
       
-	  $this->form_validation->set_rules('username','username','required|max_length[16]|min_length[4]|callback_username_is_taken');
+	  $this->form_validation->set_rules('usernameR','usernameR','required|max_length[16]|min_length[4]|callback_usernameR_is_taken');
 	  $this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_is_taken');
-	  $this->form_validation->set_rules('password', 'password', 'required|max_length[16]|min_length[3]');
-	   $this->form_validation->set_rules('re-password', 're-password', 'required|matches[password]');
+	  $this->form_validation->set_rules('passwordR', 'passwordR', 'required|max_length[16]|min_length[3]');
+	   $this->form_validation->set_rules('re-password', 're-password', 'required|matches[passwordR]');
       
 	  if($this->form_validation->run()!=true){
           
           $this->load->view("home/signUp");
       }else{
           
-          $user=$this->input->post("username");
-          $pass=$this->input->post("password");
+          $user=$this->input->post("usernameR");
+          $pass=$this->input->post("passwordR");
           $mail=$this->input->post("email");
           
           if(self::createUser($user,$pass,$mail)==true) {
               
               //KORISNIK JE USPESNO DODAT U BAZU  
-              $data['username']=$user;
+              $data['usernameR']=$user;
               $this->load->view("home/success_signUp",$data);
               
           }else {
@@ -41,16 +41,16 @@ class RegisterController extends CI_Controller {
   }
   
   
-  public function username_is_taken(){
+  public function usernameR_is_taken(){
       
-	  $name=$this->input->post('username');
+	  $name=$this->input->post('usernameR');
       $query="SELECT * FROM user WHERE nickname = \"".$name."\"";
       $arg=array();
       $result = $this->db->query($query,$arg) or die(mysql_error());
       
       If($result->num_rows()>0)
 	  {
-        $this->form_validation->set_message('username_is_taken','Sorry username <i>'. $name.' </i> is taken');
+        $this->form_validation->set_message('usernameR_is_taken','Sorry username <i>'. $name.' </i> is taken');
 		return false;
       } else 
 	  {
