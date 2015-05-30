@@ -15,10 +15,10 @@
 </div>
 <div id="container">
 	
-			
+			<p><?php echo validation_errors();?>	</p>
 			
 			<section class="main">
-					<?php echo validation_errors();?>		
+						
 				<div class="logovanje">
 						
                         <?php echo form_open('UserController/checkLogin');?>	

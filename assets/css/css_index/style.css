@@ -15,8 +15,14 @@ width: 1300px;
 padding-left:35%;
 margin: auto;
 position: relative;
+font-family: 'Raleway', 'Lato', Arial, sans-serif;
+	 color: red;
+	font-size:15px;
 }
 .main {
+	font-family: 'Raleway', 'Lato', Arial, sans-serif;
+	 color: white;
+	text-shadow: 0 2px 1px rgba(0,0,0,0.3);
 	width:35%;
 	margin: 0  auto;
 	position: relative;
