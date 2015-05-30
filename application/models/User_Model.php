@@ -41,19 +41,12 @@ class User_Model extends CI_Model {
     }
     
     public function login($nickname,$password) {
-        /*$this->db->select('nickname,password');
-        $this->db->from('user');
-        $this->db->where('nickname',$nickname);
-        $this->db->where('password',$password);*/
-        
-		
-			   
+      		   
 		$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
 		mysqli_select_db($link, "mydb") or die(mysql_error());
 		$result = mysqli_query($link, "select * from user where nickname = \"".$nickname."\"")
                or die(mysql_error());
 		
-        //$query=$this->db->get();
         if($row = mysqli_fetch_assoc($result))
 		{
 			$idUser=$row['idUser'];
@@ -69,12 +62,39 @@ class User_Model extends CI_Model {
 		}
 		return false;
 		
-        /*if($query->num_rows() == 1) { 
-            return true;
-        } else {        
-            return false;
-        }*/
     }
+	
+	public function dbInsert($user, $pass, $email) {
+      		   
+		$email=$this->input->post('email');
+		$query="INSERT INTO user (nickname, email, link_Photo, is_Admin, note_Color, password) VALUES ( \"".$user."\",  \"".$email."\", '', '0', '1',  \"".$pass."\");";
+		$arg=array();
+		$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+		
+		/*$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+		mysqli_select_db($link, "mydb") or die(mysql_error());
+		$result = mysqli_query($link, " INSERT INTO user (nickname, email, link_Photo, is_Admin, note_Color, password) VALUES ( \"".$user."\",  \"".$email."\", '', '0', '1',  \"".$pass."\");")
+               or die(mysql_error());*/
+		
+        /*if($row = mysqli_fetch_assoc($result))
+		{
+			$idUser=$row['idUser'];
+			$pass = $row['password'];
+			
+			if($pass == $password)
+			{
+				session_start();
+				$_SESSION["idUser"] = $idUser;
+				$_SESSION["ulogovan"] = true;
+				return true;
+			}
+		}
+		return false;*/
+		return true;
+		
+    }
+	
 }
 
 ?>
