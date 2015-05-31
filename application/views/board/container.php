@@ -47,16 +47,32 @@
 			<?php
 				
 				$result = $rezultat;
+				
+				
+				echo '<div class="BoardContainer">';
+					echo '<div class="one-note">
+						'; echo form_open('BoardController/newNote'); echo'
+							
+				    
+				    <p>
+				        <label for="title">Title</label>
+				        <input type="text" placeholder="title" name="title" >
+				    </p>
+				    <p>
+				        <label for="text">Text</label>
+				        <input type="text" placeholder="text" name="text"> 
+				    </p>
 
-				echo '<div class="BoardContainer">
-					<div class="one-row">
-					<div class="one-note">
-						<h1><a href=\'javascript:fg_popup_form("fg_formContainer","fg_form_InnerContainer","fg_backgroundpopup");\'> dodaj novu belesku</a></h1>
+				    <p>
+				        <input type="submit" name="insert" value="insert">
+				    </p>
+					</form>			
 					</div>';
 					
 				$i = 1;
 				while ($row = mysqli_fetch_assoc($result))
 				{
+					
 					
 					
 					$text=$row['text'];

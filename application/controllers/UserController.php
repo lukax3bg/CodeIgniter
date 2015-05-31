@@ -26,6 +26,7 @@ class UserController extends CI_Controller {
         }   
 
         public function verifyUser() {
+			
             $name=$this->input->post('username');
             $pass=$this->input->post('password');
             
