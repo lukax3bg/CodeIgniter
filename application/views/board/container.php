@@ -83,7 +83,7 @@
 						<div class="post-info-rate-share">
 			        			<div class="oceni">
 			        				<span> </span>
-			        			</div>
+			        			</div> 
 			        			<div class="post-share">
 			        				<span> </span>
 			        			</div>
