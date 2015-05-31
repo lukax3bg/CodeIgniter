@@ -8,6 +8,7 @@
 	<!-- Title of the page -->
 	<head>
 		<title>	Pinboard - <?php echo $username ?> </title>
+		
 	</head>
 	
 	<body onload="javascript:fg_hideform('fg_formContainer','fg_backgroundpopup');">

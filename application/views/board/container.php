@@ -1,102 +1,168 @@
-			<!-- NOTES -->
-			<!--<div class="BoardContainer">
-				<div class="one-row">
-					<div class="one-note">
-						<h1><a href='javascript:fg_popup_form("fg_formContainer","fg_form_InnerContainer","fg_backgroundpopup");'> dodaj novu belesku</a></h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>		
-					<a id="addemail" href="#">dodaj novu belesku </a>
-				</div>
-			</div>-->
-			<!-- END OF NOTES -->
-			
-			<!--<div class="BoardContainer">
-				<div class="one-row">
-					<div class="one-note">
-						<h1><a href='javascript:fg_popup_form("fg_formContainer","fg_form_InnerContainer","fg_backgroundpopup");'> dodaj novu belesku</a></h1>
-					</div>
-					<div class="one-note">
-						<div class="naslov">naslov</div>
-						<div class="tekst">ovo je jedna beleska</div>
-						<div class="datum">datum</div>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>
-					<div class="one-note">
-						<h1> ovo je jedna beleska </h1>
-					</div>		
-					<a id="addemail" href="#">dodaj novu belesku </a>
-				</div>
-			</div>-->
-			
-			<?php
-				
-				$result = $rezultat;
-				
-				
-				echo '<div class="BoardContainer">';
-					echo '<div class="one-note">
-						'; echo form_open('BoardController/newNote'); echo'
-							
-				    
-				    <p>
-				        <label for="title">Title</label>
-				        <input type="text" placeholder="title" name="title" >
-				    </p>
-				    <p>
-				        <label for="text">Text</label>
-				        <input type="text" placeholder="text" name="text"> 
-				    </p>
 
-				    <p>
-				        <input type="submit" name="insert" value="insert">
-				    </p>
-					</form>			
-					</div>';
-					
-				$i = 1;
-				while ($row = mysqli_fetch_assoc($result))
-				{
-					
-					
-					
-					$text=$row['text'];
-					$datum = $row['created_On'];
-					$naslov = $row['title'];
-					/*echo '<div class="one-note">
-							<h1>'; echo $text; echo '</h1>
-						</div>';*/
+
+
+<div id="outer">
 						
-					echo '<div class="one-note">
-						<div class="naslov">'; echo $naslov; echo '</div>
-						<div class="tekst">'; echo $text; echo '</div>
-						<div class="datum">'; echo $datum; echo'</div>
-					</div>';
-					$i=$i+1;
-					if($i == 5)
-					{
-						echo'</div>
-						<div class="one-row">';
-						$i = 0;
-					}
-				} 
-				echo '</div>
-				</div>';
-			?>
+			<div id="main">
 			
+				<ul class="gallery" >
+					
+					<li>
+						
+					<!--	<a href="images/pic02full.jpg"><img class="top" src="images/pic02.jpg" width="260" height="200" title="This is photo 1" alt="" /></a> -->
+						<div class="post-info">
+						
+						<div class="notetitle">
+			        		<input type="text" placeholder="Note Title" width="200px;" name="NazivNota"><br>
+						</div>
+						<div class="unesiNotes">
+							<textarea  name="text"> </textarea>
+							
+						</div>
+			        		<div class="post-info-rate-share">
+			        			<input type="button" value="Post me!">
+			        		</div>
+			        	</div>
+					</li>
+					
+					<li class="jedanNote">
+					<div class="close1"> </div>
+						<div class="post-basic-info">
+						
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
 			
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>
+
+					<li class="jedanNote">
+						<div class="close1"> </div>
+						<div class="post-basic-info">
+				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
+				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
+			        		</div>
+						
+						<div class="post-info-rate-share">
+			        			<div class="oceni">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+					</li>		
+					
+				</ul>
+
+				<br class="clear" />
+				
+			</div>
+		</div>
