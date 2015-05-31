@@ -5,7 +5,7 @@
 class BoardController extends CI_Controller {
 	
 	public function index() {
-			session_start();
+			//session_start();
 			if(!($_SESSION["ulogovan"]=="yes")){
 				redirect('HomeController/homepage');
 			}
