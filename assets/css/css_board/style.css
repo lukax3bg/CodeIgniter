@@ -616,7 +616,7 @@ max-width: 250px;
 	opacity:0.5;
 
 }
-.post-info input[type=button]{
+.post-info input[type=submit]{
 	width: 260px;
 	height: 35px;
 	background: #fff;
@@ -631,14 +631,14 @@ max-width: 250px;
 	margin-top: 0px;
 }
 
-.post-info input[type=button]:hover{
+.post-info input[type=submit]:hover{
 	opacity: 0.8;
 }
 
-.post-info input[type=button]:active{
+.post-info input[type=submit]:active{
 	opacity: 0.6;
 }
-.post-info input[type=button]:focus{
+.post-info input[type=submit]:focus{
 	outline: none;
 }
 
