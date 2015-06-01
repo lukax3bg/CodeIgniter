@@ -765,7 +765,14 @@ max-width: 250px;
 	 background-image:url(../../images/xh.png);
 }
 
-
+.close2 input[type=image]{
+	
+	content:url(../../images/x.png);
+}
+.close2 input[type=image]:hover{
+	
+	 background-image:url(../../images/xh.png);
+}
 .post-info-rate-share input[type=submit]:hover{
 	opacity: 0.8;
 }
