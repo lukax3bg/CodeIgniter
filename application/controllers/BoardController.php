@@ -198,16 +198,16 @@ class BoardController extends CI_Controller {
 	if(!($_SESSION["ulogovan"]=="yes")){
 				redirect('HomeController/homepage');
 			}
-			if(isset($_REQUEST["id"]))
+			/*if(isset($_REQUEST["id"]))
 			{
 				$group = $_GET["id"];
 			} 
 			else
 			{
 				$group = 0;
-			}
+			}*/
 			
-			$_SESSION["group"]=$group;
+			//$_SESSION["group"]=$group;
 			$idUser=$_SESSION["idUser"];
 			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
 				mysqli_select_db($link, "mydb") or die(mysql_error());

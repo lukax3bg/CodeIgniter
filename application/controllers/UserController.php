@@ -31,7 +31,7 @@ class UserController extends CI_Controller {
 			session_start();
 			unset($_SESSION["nome"]);  
 			session_destroy();
-			redirect('HomeController/signIn');
+			redirect('HomeController/homepage');
 			
 			
 		}
