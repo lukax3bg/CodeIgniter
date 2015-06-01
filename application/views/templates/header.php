@@ -7,7 +7,7 @@
 	
 	<!-- Title of the page -->
 	<head>
-		<title>	Pinboard - <?php echo $username ?> </title>
+		<title>	PinBoard </title>
 		
 	</head>
 	
