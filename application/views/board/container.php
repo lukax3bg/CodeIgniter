@@ -8,15 +8,42 @@
 <div class="grupe">
 <div class="grupe1">
 						
-						<h2><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
-				       	<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+						
+				       	<h2><a href="<?php echo base_url()."index.php/BoardController?id=0"; ?>">All notes</a></h2>
+				   		<h2><a href="<?php echo base_url()."index.php/BoardController?id=-1"; ?>">My notes</a>
+						
+						
+						<?php
+				
+								$groups = $grupe;
+								
+								
+									
+								while ($row = mysqli_fetch_assoc($groups))
+								{
+									$name=$row['name'];
+									$idGrupa = $row['idGroup'];
+									
+									
+									
+									echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
+				   		
+										echo '<h2><a href="'; echo base_url()."index.php/BoardController?id="; echo $idGrupa; echo '">'; echo $name; echo '</a></h2>';
+										//echo '<h2><a href="#">Animation films</a></h3>';
+									
+								} 
+							?>
+						
+						
+						
+						
+						
+						<!--<div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
 						<h2><a href="#">Animation films</a></h3>
 			        		<div class="post-info-rate-share1">
 
 			        			<input type="submit" name="insert" value="Add new group!">
-			        		</div>
+			        		</div>-->
 			        	</div>
 
 </div>

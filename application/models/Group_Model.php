@@ -1,46 +1,27 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of mgroup
- *
- * @author Bogdana
- */
 class Group_Model extends CI_Model {
-    
+    //put your code here
+	//public $link = NULL;
     function __construct() {
-        $this->load->database();
-        $this->load->model('IsMember_Model', 'ismember');
+        //$this->load->database();
+		/*$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+        mysqli_select_db($link, "mydb") or die(mysql_error());*/
         parent::__construct();
     }
     
-    public function getEntries() {
-        return $this->db->get('group')->result();
+    public function grupe($idUser) {
+        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+				mysqli_select_db($link, "mydb") or die(mysql_error());
+		
+		$result = mysqli_query($link, "SELECT * FROM `group` g WHERE exists (select * from ismember im where im.id_User = ".$idUser." and g.idGroup = im.id_Group) ;")
+				or die(mysql_error());
+		
+		return $result;
     }
-    
-    public function createEntry($name, $idGroup) {
-        $this->load->helper('date');
-
-        //srediti kad aleksa sredi bazu da bude autoinkrement i kad dule namesti login
-        $creator='1';
-        $group = array(
-            'idGroup' => $idGroup,
-            'name' => $name ,
-            'id_Creator' => $creator ,
-            'created_On' => date('Y-m-d H:i:s')
-        );
-        
-        //$this->db->set('time', 'NOW()', FALSE);
-        //$this->db->insert('group', $group);
-
-        $this->db->insert('group', $group);
-        $this->ismember->createEntry($creator, $idGroup, '1');
-        
-        return $idGroup;
-    }
+	
+	
 }
+
+?>

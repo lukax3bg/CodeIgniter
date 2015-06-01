@@ -55,6 +55,7 @@ class User_Model extends CI_Model {
 				$_SESSION["ulogovan"] = "yes";
 				$_SESSION["group"]=0;
 				$_SESSION["cur"]=0;
+				$_SESSION["druga grupa"] = 0;
 				return true;
 			}
 		}
