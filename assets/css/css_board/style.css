@@ -20,7 +20,7 @@ padding-left:35%;
 margin: auto;
 position: relative;
 font-family: 'Raleway', 'Lato', Arial, sans-serif;
-	 color: red;
+	 color: a7a3ac;
 	font-size:15px;
 }
 .main {
@@ -535,6 +535,18 @@ footer a {
 	-o-transition: color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
 }
+.close2{
+	
+	
+	
+	float:right;
+	right:3px;
+	margin-top:3px;
+	-webkit-transition: color 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out;
+}
 
 /* /////////////////////////////////////////////////////////////////////// */
 
@@ -723,6 +735,7 @@ max-width: 250px;
 	
 	content:url(../../images/x.png);
 }
+
 
 .post-info-rate-share input[type=submit]:hover{
 	opacity: 0.8;
