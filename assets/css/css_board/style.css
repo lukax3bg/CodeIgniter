@@ -218,12 +218,14 @@ float:left;
 	margin: 0.6% 2% 0 8%;
 	width: 4.55%;
 }
-.nav-icon a span{
+
+.right_bt{
 	float:right;
 	width:48px;
 	height:34px;
 	display:block;
-	background:url(../../images/nav-icon.png) no-repeat 0px 0px;
+background:url(../../images/nav-icon.png) no-repeat 0px 0px;
+
 }
 
 
@@ -324,6 +326,7 @@ a.boxclose{
 	right: 15em;
  }
  #activator {
+ 
 }
 .menu_box_list{
 	display:inline-block;

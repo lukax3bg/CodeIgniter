@@ -8,6 +8,7 @@ class UserController extends CI_Controller {
 		$this->load->view('home/homepage');
 	}
 	
+	
         public function checkLogin(){
 			
             $this->form_validation->set_rules('username','username','required');
@@ -23,7 +24,17 @@ class UserController extends CI_Controller {
                 return;
             }
 			//redirect('BoardController');
-        }   
+        
+		}   
+		public function logout(){
+			
+			session_start();
+			unset($_SESSION["nome"]);  
+			session_destroy();
+			redirect('HomeController/signIn');
+			
+			
+		}
 
         public function verifyUser() {
 			

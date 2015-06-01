@@ -10,12 +10,12 @@
 				
 				<div class="nav-icon">
 				<p>Pin<a href="<?php echo base_url()."index.php/BoardController"; ?>">Board</a></p>
-					 <a href="<?php echo base_url()."#"; ?>" class="right_bt" id="activator"><span> </span> </a>
+					<?php echo form_open('UserController/logout');  ?> <input type="submit"  name="submit" value=""  class="right_bt" id="activator" /><span> </span> </a></form>
 				</div>
 				        	  
 				<div class="top-searchbar">
-					<form>
-						<input type="text" /><input type="submit" value="" />
+					<?php echo form_open('BoardController/search');  ?>
+						<input type="text"	 name="name"/><input type="submit" name="submit" value="Search" />
 					</form>
 				</div>
 				<div class="userinfo">

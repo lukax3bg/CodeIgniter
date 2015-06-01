@@ -197,6 +197,55 @@ class BoardController extends CI_Controller {
 				};
 			
 	}
+	
+	
+	public function search(){
+		
+		
+		$this->form_validation->set_rules('title','title','required|max_length[45]');
+		$title=$this->input->post("title");
+		
+	  if(isset($_POST['submit'])){ 
+	  if(isset($_GET['go'])){ 
+	  if(preg_match("/^[  a-zA-Z]+/", $_POST['name'])){ 
+	  $name=$_POST['name']; 
+	  //connect  to the database
+				
+	  $db=mysql_connect  ("localhost", "root",  "") or die ('Ne mogu da se konektujem: ' . mysql_error()); 
+	//-select  the database to use 
+	$mydb=mysql_select_db($db,"mydb")or die(mysql_error()); 
+	  //-query  the database table 
+	  $sql="SELECT  idNote, text, created_On, title FROM note WHERE text LIKE '%" . $name .  "%' OR title LIKE '%" . $name ."%'"; 
+	  //-run  the query against the mysql query function 
+	  $result=mysql_query($sql); 
+	  //-create  while loop and loop through result set 
+	  while($row=mysql_fetch_array($result)){ 
+	          $text  =$row['text']; 
+	          $created_On=$row['created_On']; 
+	          $title=$row['title']; 
+			  $id=$rowp['idNote'];
+	  //-display the result of the array 
+	  echo "<ul>\n"; 
+	  echo "<li>" . "<p>"   .$text . " " . $title .  "</p></li>\n"; 
+	  echo "</ul>"; 
+	} 
+	  } 
+	  else{ 
+	  echo  "<p>Please enter a search query</p>"; 
+	  } 
+	  }  else{ echo  "<p>123</p>";} 
+	  } else{   echo  "<p>1234</p>";} 
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
         
        //SELECT n.idNote, cn.text, gn.last_Edited_On, n.title from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = 1
 	   //$result = mysqli_query($link, "SELECT * FROM note n WHERE exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = 1) or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = 1 and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=1)))")
