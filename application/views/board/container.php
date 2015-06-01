@@ -8,8 +8,8 @@
 <div class="grupe">
 <div class="grupe1">
 						
-						<h2><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
-				       	<h2><a href="#">Grupa1</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+						
+				       	<h2><a href="#">Grupa1</a></h3>
 				   		<h2><a href="#">grupa 2 </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
 				   		<h2><a href="#">grupa 3</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
 						<h2><a href="#">Agrupa 4</a></h3>
