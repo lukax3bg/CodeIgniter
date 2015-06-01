@@ -93,7 +93,7 @@ class BoardController extends CI_Controller {
 			
 	}
 	public function editUser (){
-      $_SESSION["cur"]=$this->input->post("idNote");;
+      //$_SESSION["cur"]=$this->input->post("idNote");;
       redirect('UserController/editUser');
 		//return true;
   }
