@@ -26,7 +26,18 @@
 									
 									
 									
-									echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
+									echo '
+									<div class="close2">';echo form_open('BoardController/leaveGroup'); echo  
+									
+									'
+									<input type="hidden" placeholder="grupa" name="grupa" value='; echo $idGrupa; echo '>
+									
+									
+									<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $idGrupa; echo '" alt="submit" ></form></div></h2>';	
+									
+									
+									
+									//echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
 				   		
 										echo '<h2><a href="'; echo base_url()."index.php/BoardController?id="; echo $idGrupa; echo '">'; echo $name; echo '</a></h2>';
 										//echo '<h2><a href="#">Animation films</a></h3>';
@@ -34,7 +45,7 @@
 								} 
 							?>
 						
-						
+						<?php echo form_open('BoardController/newGroup'); ?>
 						<div class="novagrupa">
 			        		<input type="text" placeholder="nova grupa" width="200px;" name="title"><br>
 						</div>
@@ -42,26 +53,97 @@
 
 			        			<input type="submit" name="insert" value="Add new group">
 			        		</div>
+							</form>	
+						
 			        	</div>
 						
 						
 						<div class="clanovi"">
 						<div class="grupe1">
 						
-						<h2><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
-				       	<h2><a href="#">Luka </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Dusan </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Anima</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-						<h2><a href="#">Aleksa</a></h3>
-						<div class="novagrupa">
-			        		<input type="text" placeholder="nov clan" width="200px;" name="title"><br>
-						</div>
-			        		<div class="post-info-rate-share1">
+						
+						
+						
+						<?php
+				
+								$users = $korisnici;
+								$isAdmin = $admin;
+								if(($_SESSION["group"]>0)&&($isAdmin ==1))
+								{
+								
+									
+									while ($row = mysqli_fetch_assoc($users))
+									{
+										$nick=$row['nickname'];
+										$userID = $row['idUser'];
+										
+										
+										
+										echo '
+										<div class="close2">';echo form_open('BoardController/ban_User'); echo  
+										
+										'
+										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
+										
+										
+										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div></h2>';	
+										
+										
+										
+										//echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
+							
+											echo '<h2><a href="'; echo base_url()."#"; echo '">'; echo $nick; echo '</a></h2>';
+											//echo '<h2><a href="#">Animation films</a></h3>';
+										
+									}
+									
+									echo form_open('BoardController/add_User');
+									echo '
+									<div class="novagrupa">
+										<input type="text" placeholder="nick" width="200px;" name="nick"><br>
+									</div>
+										<div class="post-info-rate-share1">
 
-			        			<input type="submit" name="insert" value="Add new member">
-			        		</div>
-							</div>
-			        	</div>
+											<input type="submit" name="insert" value="Add new member">
+										</div>
+										</form>
+									';
+								}
+								else if($_SESSION["group"]>0)
+								{
+									while ($row = mysqli_fetch_assoc($users))
+									{
+										$nick=$row['nickname'];
+										$userID = $row['idUser'];
+										
+										
+										
+										echo '
+										<div class="close2">
+										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
+										
+										
+										</div></h2>';	
+										
+										
+										
+										//echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
+							
+											echo '<h2><a href="'; echo base_url()."#"; echo '">'; echo $nick; echo '</a></h2>';
+											//echo '<h2><a href="#">Animation films</a></h3>';
+										
+									}
+									
+									
+								}
+							?>
+						
+						
+						</div>
+						
+					</div>	
+						
+						
 
 </div>
 
@@ -162,158 +244,7 @@
 				} 
 			?>
 					
-					<!--<li class="jedanNote">
-					<div class="close1"> </div>
-						<div class="post-basic-info">
-						
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div> 
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-			
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>
-
-					<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>	
-						<li class="jedanNote">
-						<div class="close1"> </div>
-						<div class="post-basic-info">
-				        		<h3><a href="<?php echo base_url()."#"; ?>">Animation films</a></h3>
-				        		<span><a href="<?php echo base_url()."#"; ?>"><label> </label>30.5.2015 - 03:55</a></span>
-				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry. isl mus a euismod varius aenean massa. Suspendisse vivamus natoque cubilia volutpat praesent euismod primis.</p>
-			        		</div>
-						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>-->
+					
 					
 				</ul>
 

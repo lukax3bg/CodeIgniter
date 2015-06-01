@@ -40,7 +40,7 @@
 				<div class="userinfo">
 					<div class="user">
 						<ul>
-							<li><a href="<?php echo base_url()."index.php/BoardController/editUser"; ?>"><img src="<?php echo base_url()."/assets/images/user-pic1.png"; ?>" title="user-name" /><span>Luka</span></a></li>
+							<li><a href="<?php echo base_url()."index.php/BoardController/editUser"; ?>"><img src="<?php echo base_url()."/assets/images/user-pic1.png"; ?>" title="user-name" /><span><?php echo $ime; ?></span></a></li>
 						</ul>
 					</div>
 				</div>
