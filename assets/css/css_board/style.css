@@ -418,6 +418,31 @@ a.boxclose{
 .oceni span:hover{
 	background:url(../../images/zvezdica.png) no-repeat 0px 0px; 
 }
+/*<input type="checkbox" name="thing" value="valuable" id="thing"/><label for="thing"></label>
+.oceni input[type=checkbox] {
+    display:none;
+  }
+
+.oceni  input[type=checkbox] + label
+   {
+       background:url(../../images/zvezdicaSiva.png) no-repeat 0px 0px; 
+       height: 16px;
+       width: 16px;
+       display:inline-block;
+       padding: 0 0 0 0px;
+   }
+
+.oceni   input[type=checkbox]:checked + label
+    {
+        background:url(../../images/zvezdica.png) no-repeat 0px 0px;
+        height: 16px;
+        width: 16px;
+        display:inline-block;
+        padding: 0 0 0 0px;
+    }
+
+*/
+
 .post-basic-info{
 	padding: 0% 0% 0% 5%;
 }
