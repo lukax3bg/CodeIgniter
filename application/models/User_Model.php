@@ -92,6 +92,43 @@ class User_Model extends CI_Model {
 		return true;
 		
     }
+	public function checkPass($user,$password) {
+      		   
+		$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+		mysqli_select_db($link, "mydb") or die(mysql_error());
+		$result = mysqli_query($link, "select * from user where idUser = \"".$user."\"")
+               or die(mysql_error());
+		
+        if($row = mysqli_fetch_assoc($result))
+		{
+			//$idUser=$row['idUser'];
+			$pass = $row['password'];
+			
+			if($pass == $password)
+			{
+				return true;
+			}
+		}
+		return false;
+		
+    }
+	
+	public function changePass($user,$password) {
+      		   
+		$query="update user set password = \"".$password."\" where idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());	
+		
+    }
+	
+	public function changeMail($user,$mail) {
+      		   
+		$query="update user set email = \"".$mail."\" where idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());	
+		
+    }
+	
 	
 }
 

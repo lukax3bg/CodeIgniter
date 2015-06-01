@@ -29,7 +29,17 @@ class BoardController extends CI_Controller {
 	}
 	
 	public function newNote() {
-			//session_start();
+			
+			$this->load->helper('security');
+      
+	  $this->form_validation->set_rules('title','title','required|max_length[45]');
+	  $this->form_validation->set_rules('text', 'text', 'required|max_length[400]');
+      
+	  if($this->form_validation->run()!=true){
+          
+         redirect('BoardController');
+      }
+	  else{
 			$title=$this->input->post("title");
 			$text=$this->input->post("text");
 			$user=$_SESSION["idUser"];
@@ -40,6 +50,7 @@ class BoardController extends CI_Controller {
 				redirect('BoardController');
 			} else {
 				return false;
+			};
 			};
 			
 			/*$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
@@ -64,7 +75,7 @@ class BoardController extends CI_Controller {
 			if ($this->board->hideNote($user, $note) == TRUE) {
 				redirect('BoardController');
 			} else {
-				redirect('UserController/editUser');
+				redirect('BoardController');
 			};
       redirect('UserController/editUser');
 	   $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'rezultat'=>$result, 'idUser'=>$idUser));

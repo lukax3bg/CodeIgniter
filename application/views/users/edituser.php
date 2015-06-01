@@ -22,25 +22,30 @@
                     <img class="slikaDim" src="<?php echo base_url()."/assets/images/pic10.jpg"; ?>" >
                     <div class="izmenaProfila">
                        
-                    
+                    <?php echo form_open('UserController/changeMail');?>
 				        <label >E-mail</label>
-				        <input type="text" placeholder="email" name="e-mail" >
-				    
-					
+						
+				        <input type="text" placeholder="email" name="email" >
+						<input type="submit" name="submit" value="Promeni mail">
+						</form>
+						
+						<?php echo form_open('UserController/changePass');?>
 				        <label >Old password</label>
 				        <input type="password" placeholder="password" name="password"> 
 				    
 					
 				        <label for="password">New Password</label>
-				        <input type="password" placeholder="new-pass" name="password"> 
+				        <input type="password" placeholder="new-password" name="new-password"> 
 				   
 				        <label for="password">Repeat password</label>
-				        <input type="password" placeholder="re-pass" name="password"> 
+				        <input type="password" placeholder="re-password" name="re-password"> 
 				    
-				        <input type="submit" name="submit" value="Promeni">
+				        <input type="submit" name="submit" value="Promeni sifru">
 				       
-                        
+                        </form>
                     </div>
+					
+					<?php echo validation_errors();?>
                 </div>
             </div>
         </div>

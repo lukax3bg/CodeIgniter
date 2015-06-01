@@ -131,25 +131,68 @@ class UserController extends CI_Controller {
       
        if(!($_SESSION["ulogovan"]=="yes")){
 				redirect('HomeController/homepage');
-			}
-			$_SESSION["group"]=1;
-			$idUser=$_SESSION["idUser"];
-			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
-			$group = $_SESSION["group"];
-			if($group == 0){
-				$result = mysqli_query($link, "SELECT * FROM note n WHERE exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." ORDER BY created_On desc")
-				or die(mysql_error());
-			}
-			else
-			{
-				$result = mysqli_query($link, "SELECT * FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." ORDER BY created_On desc")
-				or die(mysql_error());
-			}
-			
-            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'rezultat'=>$result, 'idUser'=>$idUser));
+			};
+			$idUser = $_SESSION["idUser"];			
+            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));
   }
-         
+  
+  public function changeMail()
+  {
+	$this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_is_taken');
+	if($this->form_validation->run()!=true){
+          $idUser = $_SESSION["idUser"];
+          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));
+      }else{
+          
+          $user = $_SESSION['idUser'];
+          $mail=$this->input->post("email");
+          
+          $this->load->model('User_Model', 'user');
+          $this->user->changeMail($user,$mail);
+
+			$idUser = $_SESSION["idUser"];
+          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));	  
+      }
+  }
+  
+  public function changePass()
+  {
+	$this->form_validation->set_rules('password','password','required|callback_checkPass');
+	$this->form_validation->set_rules('new-password', 'new-password', 'required|max_length[16]|min_length[3]');
+	$this->form_validation->set_rules('re-password', 're-password', 'required|matches[new-password]');
+	
+	
+	if($this->form_validation->run()!=true){
+          $idUser = $_SESSION["idUser"];
+          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));
+      }else{
+          
+          $user = $_SESSION['idUser'];
+          $pass=$this->input->post("new-password");
+          
+          $this->load->model('User_Model', 'user');
+          $this->user->changePass($user,$pass);
+
+			$idUser = $_SESSION["idUser"];
+          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));	  
+      }
+	
+  }
+    public function checkPass()
+	{
+		$user = $_SESSION['idUser'];
+		$pass=$this->input->post("password");
+		
+		$this->load->model('User_Model', 'user');
+            //echo $this->user->login($name,$pass);
+			//return;
+            if($this->user->checkPass($user,$pass)){
+                return true;
+            }else{
+                $this->form_validation->set_message('checkPass','Incorect password');
+                return false;
+            }
+	}      
 }
 
 
