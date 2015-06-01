@@ -8,7 +8,7 @@
 <div class="grupe">
 <div class="grupe1">
 						
-						
+					
 				       	<h2><a href="<?php echo base_url()."index.php/BoardController?id=0"; ?>">All notes</a></h2>
 				   		<h2><a href="<?php echo base_url()."index.php/BoardController?id=-1"; ?>">My notes</a>
 						
@@ -35,15 +35,32 @@
 							?>
 						
 						
-						
-						
-						
-						<!--<div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
-						<h2><a href="#">Animation films</a></h3>
+						<div class="novagrupa">
+			        		<input type="text" placeholder="nova grupa" width="200px;" name="title"><br>
+						</div>
 			        		<div class="post-info-rate-share1">
 
-			        			<input type="submit" name="insert" value="Add new group!">
-			        		</div>-->
+			        			<input type="submit" name="insert" value="Add new group">
+			        		</div>
+			        	</div>
+						
+						
+						<div class="clanovi"">
+						<div class="grupe1">
+						
+						<h2><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
+				       	<h2><a href="#">Luka </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+				   		<h2><a href="#">Dusan </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+				   		<h2><a href="#">Anima</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+						<h2><a href="#">Aleksa</a></h3>
+						<div class="novagrupa">
+			        		<input type="text" placeholder="nov clan" width="200px;" name="title"><br>
+						</div>
+			        		<div class="post-info-rate-share1">
+
+			        			<input type="submit" name="insert" value="Add new member">
+			        		</div>
+							</div>
 			        	</div>
 
 </div>

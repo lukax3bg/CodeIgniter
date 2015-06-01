@@ -191,10 +191,12 @@ float:left;
 	
 }
 .nav-icon  p{
-	margin-left:-6%;
+	margin-top:5px;
+	margin-left:-7%;
 	position:fixed;
 	color:#8C8C8C;
-	font-size:1.2em;
+	font-size:1.8em;
+	
 }
 
 .nav-icon p a{
@@ -217,6 +219,7 @@ float:left;
 	width: 4.55%;
 }
 .nav-icon a span{
+	float:right;
 	width:48px;
 	height:34px;
 	display:block;
@@ -393,9 +396,10 @@ a.boxclose{
 /*--//userinfo--*/
 /*----start-post-grids----*/
 .post-share span{
-	background:url(../../images/user-pic1.png) no-repeat -7px 0px;
-	height:26px;
-	width:26px;
+	background:url(../../images/user-pic.png) no-repeat -7px 0px;
+	height:28px;
+	background-position:center;
+	width:30px;
 	display:inline-block;
 	border-radius:30em;
 	-webkit-border-radius:30em;
@@ -403,7 +407,7 @@ a.boxclose{
 	-o-border-radius:30em;
 }
 .post-share span:hover{
-	background:url(../../images/user-pic1.png) no-repeat -7px 0px;
+	background:url(../../images/user-pic.png) no-repeat -7px 0px;
 }
 .oceni span{
 	height:18px;
@@ -444,6 +448,11 @@ a.boxclose{
 
 .post-basic-info h3 a:hover{
 	color:#B9CB41;
+}
+.post-basic-info p{
+
+ overflow: hidden;
+
 }
 .post-basic-info span a{
 	color:#ACAAAA;
@@ -605,6 +614,7 @@ body {
 		padding: 0;
 	}
 	
+
 	.gallery li {
 		width: 260px;
 		float: left;
@@ -629,7 +639,9 @@ body {
 	
 
 }
-	
+	.jedanNote p{
+	max-width:250px;
+	}
 	
 	.gallery img {
 		border-radius: 10px;
@@ -663,7 +675,28 @@ max-width: 250px;
     font-size: 13px;
 	opacity:0.5;
 }
+.novagrupa input[type=text] {
+    /* Size and position */
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 15px;
+	margin-left: 2%;
+	margin-top: 2%;
+max-width: 250px; 
+    /* Styles */
+    border: 1px solid #4e3043; /* Fallback */
+    border: 1px solid rgba(78,48,67, 0.8);
+    background: rgba(0,0,0,0.15);
+    border-radius: 2px;
+   
+    
 
+    /* Font styles */
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    
+    font-size: 13px;
+	opacity:0.4;
+}
 	
 .unesiNotes textarea{
 	height:100px;
@@ -715,7 +748,7 @@ max-width: 250px;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;
-	color: #a18d6c;
+	color: #D2B9D3;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -729,14 +762,17 @@ max-width: 250px;
 }
 .close1 input[type=image]:hover{
 	
-	content:url(../../images/xh.png);
+	 background-image:url(../../images/xh.png);
 }
-.close1 input[type=image]{
+
+.close2 input[type=image]{
 	
 	content:url(../../images/x.png);
 }
-
-
+.close2 input[type=image]:hover{
+	
+	 background-image:url(../../images/xh.png);
+}
 .post-info-rate-share input[type=submit]:hover{
 	opacity: 0.8;
 }
@@ -766,9 +802,17 @@ margin-top:9px;
   
 div.close1:hover{
 margin-top:9px;
+
  
   }
 
+  .clanovi{
+  margin-top:10%;
+  
+  
+  
+  
+  }
 
 
 
