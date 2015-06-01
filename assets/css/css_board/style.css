@@ -667,7 +667,28 @@ max-width: 250px;
     font-size: 13px;
 	opacity:0.5;
 }
+.novagrupa input[type=text] {
+    /* Size and position */
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 15px;
+	margin-left: 2%;
+	margin-top: 2%;
+max-width: 250px; 
+    /* Styles */
+    border: 1px solid #4e3043; /* Fallback */
+    border: 1px solid rgba(78,48,67, 0.8);
+    background: rgba(0,0,0,0.15);
+    border-radius: 2px;
+   
+    
 
+    /* Font styles */
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    
+    font-size: 13px;
+	opacity:0.4;
+}
 	
 .unesiNotes textarea{
 	height:100px;
@@ -719,7 +740,7 @@ max-width: 250px;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;
-	color: #a18d6c;
+	color: #D2B9D3;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;

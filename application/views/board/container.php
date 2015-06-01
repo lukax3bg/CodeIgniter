@@ -9,10 +9,13 @@
 <div class="grupe1">
 						
 						<h2><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h2>
-				       	<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-				   		<h2><a href="#">Animation films</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
-						<h2><a href="#">Animation films</a></h3>
+				       	<h2><a href="#">Grupa1</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+				   		<h2><a href="#">grupa 2 </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+				   		<h2><a href="#">grupa 3</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
+						<h2><a href="#">Agrupa 4</a></h3>
+						<div class="novagrupa">
+			        		<input type="text" placeholder="nova grupa" width="200px;" name="title"><br>
+						</div>
 			        		<div class="post-info-rate-share1">
 
 			        			<input type="submit" name="insert" value="Add new group">
@@ -26,6 +29,9 @@
 				   		<h2><a href="#">Dusan </a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
 				   		<h2><a href="#">Anima</a><div class="close2"><input type="image" src="<?php echo base_url()."/assets/images/x.png"; ?>"  alt="submit" > </div></h3>
 						<h2><a href="#">Aleksa</a></h3>
+						<div class="novagrupa">
+			        		<input type="text" placeholder="nov clan" width="200px;" name="title"><br>
+						</div>
 			        		<div class="post-info-rate-share1">
 
 			        			<input type="submit" name="insert" value="Add new member">
