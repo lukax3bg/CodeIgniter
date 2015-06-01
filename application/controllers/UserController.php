@@ -127,7 +127,7 @@ class UserController extends CI_Controller {
 		//return true;
   }
   
-  public function edituser (){
+  public function editUser (){
       
        if(!($_SESSION["ulogovan"]=="yes")){
 				redirect('HomeController/homepage');
