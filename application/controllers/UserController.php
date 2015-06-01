@@ -126,6 +126,18 @@ class UserController extends CI_Controller {
         };
 		//return true;
   }
+  
+  public function editUser (){
+      
+      /*$this->load->model('User_Model', 'user');
+      if ($this->user->dbInsert($user, $pass, $mail) == TRUE) {
+            return true;
+        } else {
+            return false;
+        };
+		//return true;*/
+		$this->load->view('home/homepage');
+  }
          
 }
 
