@@ -9,7 +9,7 @@
 				</div>
 				
 				<div class="nav-icon">
-				<p>Pin<a href="#">Board</a></p>
+				<p>Pin<a href="<?php echo base_url()."index.php/BoardController"; ?>">Board</a></p>
 					 <a href="<?php echo base_url()."#"; ?>" class="right_bt" id="activator"><span> </span> </a>
 				</div>
 				 <div class="box" id="box">
