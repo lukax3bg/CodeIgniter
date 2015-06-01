@@ -449,6 +449,11 @@ a.boxclose{
 .post-basic-info h3 a:hover{
 	color:#B9CB41;
 }
+.post-basic-info p{
+
+ overflow: hidden;
+
+}
 .post-basic-info span a{
 	color:#ACAAAA;
 	font-size:0.7em;
@@ -634,7 +639,9 @@ body {
 	
 
 }
-	
+	.jedanNote p{
+	max-width:250px;
+	}
 	
 	.gallery img {
 		border-radius: 10px;
