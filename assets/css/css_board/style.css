@@ -398,7 +398,7 @@ a.boxclose{
 .post-share span{
 	background:url(../../images/user-pic.png) no-repeat -7px 0px;
 	height:28px;
-	
+	background-position:center;
 	width:30px;
 	display:inline-block;
 	border-radius:30em;
@@ -755,11 +755,7 @@ max-width: 250px;
 }
 .close1 input[type=image]:hover{
 	
-	content:url(../../images/xh.png);
-}
-.close1 input[type=image]{
-	
-	content:url(../../images/x.png);
+	 background-image:url(../../images/xh.png);
 }
 
 
@@ -792,6 +788,7 @@ margin-top:9px;
   
 div.close1:hover{
 margin-top:9px;
+
  
   }
 
