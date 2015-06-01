@@ -21,6 +21,9 @@
 									
 								while ($row = mysqli_fetch_assoc($groups))
 								{
+									
+									
+									
 									$name=$row['name'];
 									$idGrupa = $row['idGroup'];
 									
@@ -196,50 +199,66 @@
 					$datum = $row['created_On'];
 					$naslov = $row['title'];
 					$note = $row['idNote'];
-					/*echo '<div class="one-note">
-							<h1>'; echo $text; echo '</h1>
-						</div>';*/
+					
+					$textL = strtolower($text);
+					$naslovL = strtolower($naslov);
+					$argL = strtolower($arg);
+					if ($filter == 0)
+					{
+						echo '<li class="jedanNote">
+						<div class="close1">';echo form_open('BoardController/hideNote'); echo  
 						
-					/*echo '<div class="one-note">
-					
-					
-					src="'; echo base_url()."/assets/images/psi.jpg"; echo '"
-					
-					
-					<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" >
-					
-					
-
-						<div class="naslov">'; echo $naslov; echo '</div>
-						<div class="tekst">'; echo $text; echo '</div>
-						<div class="datum">'; echo $datum; echo'</div>
-					</div>';*/
-					
-					echo '<li class="jedanNote">
-					<div class="close1">';echo form_open('BoardController/hideNote'); echo  
-					
-					'
-					<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '>
-					
-					
-					<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" ></form> </div>
-						<div class="post-basic-info">
+						'
+						<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '>
 						
-				        		<h3><a href="';echo base_url()."#";echo '">'; echo $naslov; echo '</a></h3>
-				        		<span><a href="'; echo base_url()."#"; echo '"><label> </label>'; echo $datum; echo'</a></span>
-				        		<p>'; echo $text; echo '</p>
-			        		</div>
 						
-						<div class="post-info-rate-share">
-			        			<div class="oceni">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-					</li>';
+						<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" ></form> </div>
+							<div class="post-basic-info">
+							
+									<h3><a href="';echo base_url()."#";echo '">'; echo $naslov; echo '</a></h3>
+									<span><a href="'; echo base_url()."#"; echo '"><label> </label>'; echo $datum; echo'</a></span>
+									<p>'; echo $text; echo '</p>
+								</div>
+							
+							<div class="post-info-rate-share">
+									<div class="oceni">
+										<span> </span>
+									</div>
+									<div class="post-share">
+										<span> </span>
+									</div>
+									<div class="clear"> </div>
+								</div>
+						</li>';
+					}
+					else if((strpos($textL,$argL)!== FALSE)||((strpos($naslovL,$argL)!== FALSE)))
+					{
+						echo '<li class="jedanNote">
+						<div class="close1">';echo form_open('BoardController/hideNote'); echo  
+						
+						'
+						<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '>
+						
+						
+						<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" ></form> </div>
+							<div class="post-basic-info">
+							
+									<h3><a href="';echo base_url()."#";echo '">'; echo $naslov; echo '</a></h3>
+									<span><a href="'; echo base_url()."#"; echo '"><label> </label>'; echo $datum; echo'</a></span>
+									<p>'; echo $text; echo '</p>
+								</div>
+							
+							<div class="post-info-rate-share">
+									<div class="oceni">
+										<span> </span>
+									</div>
+									<div class="post-share">
+										<span> </span>
+									</div>
+									<div class="clear"> </div>
+								</div>
+						</li>';
+					}
 					
 				} 
 			?>
