@@ -38,18 +38,34 @@
 					$text=$row['text'];
 					$datum = $row['created_On'];
 					$naslov = $row['title'];
+					$note = $row['idNote'];
 					/*echo '<div class="one-note">
 							<h1>'; echo $text; echo '</h1>
 						</div>';*/
 						
 					/*echo '<div class="one-note">
+					
+					
+					src="'; echo base_url()."/assets/images/psi.jpg"; echo '"
+					
+					
+					<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" >
+					
+					
+
 						<div class="naslov">'; echo $naslov; echo '</div>
 						<div class="tekst">'; echo $text; echo '</div>
 						<div class="datum">'; echo $datum; echo'</div>
 					</div>';*/
 					
 					echo '<li class="jedanNote">
-					<div class="close1"> <input type="submit" src="'; echo base_url()."/assets/images/psi.jpg"; echo '" alt="image"></div>
+					<div class="close1">';echo form_open('BoardController/hideNote'); echo  
+					
+					'
+					<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '>
+					
+					
+					<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $note; echo '" alt="submit" ></form> </div>
 						<div class="post-basic-info">
 						
 				        		<h3><a href="';echo base_url()."#";echo '">'; echo $naslov; echo '</a></h3>
