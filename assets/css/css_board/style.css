@@ -191,10 +191,12 @@ float:left;
 	
 }
 .nav-icon  p{
-	margin-left:-6%;
+	margin-top:5px;
+	margin-left:-7%;
 	position:fixed;
 	color:#8C8C8C;
-	font-size:1.2em;
+	font-size:1.8em;
+	
 }
 
 .nav-icon p a{
@@ -393,9 +395,10 @@ a.boxclose{
 /*--//userinfo--*/
 /*----start-post-grids----*/
 .post-share span{
-	background:url(../../images/user-pic1.png) no-repeat -7px 0px;
-	height:26px;
-	width:26px;
+	background:url(../../images/user-pic.png) no-repeat -7px 0px;
+	height:28px;
+	
+	width:30px;
 	display:inline-block;
 	border-radius:30em;
 	-webkit-border-radius:30em;
@@ -403,7 +406,7 @@ a.boxclose{
 	-o-border-radius:30em;
 }
 .post-share span:hover{
-	background:url(../../images/user-pic1.png) no-repeat -7px 0px;
+	background:url(../../images/user-pic.png) no-repeat -7px 0px;
 }
 .oceni span{
 	height:18px;
@@ -605,6 +608,7 @@ body {
 		padding: 0;
 	}
 	
+
 	.gallery li {
 		width: 260px;
 		float: left;
@@ -769,6 +773,13 @@ margin-top:9px;
  
   }
 
+  .clanovi{
+  margin-top:10%;
+  
+  
+  
+  
+  }
 
 
 

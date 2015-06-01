@@ -403,10 +403,12 @@ a.boxclose{
 	
 }
 .nav-icon  p{
-	margin-left:-6%;
+	margin-top:5px;
+	margin-left:-7%;
 	position:fixed;
 	color:#8C8C8C;
-	font-size:1.2em;
+	font-size:1.8em;
+	
 }
 
 .nav-icon p a{
