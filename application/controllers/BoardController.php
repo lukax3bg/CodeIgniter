@@ -30,7 +30,7 @@ class BoardController extends CI_Controller {
 				$_SESSION["group"] = 0;
 			}
 			else if($group == -1){
-				$result = mysqli_query($link, "SELECT * FROM note n WHERE exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.");")
+				$result = mysqli_query($link, "SELECT * FROM note n WHERE exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") ORDER BY created_On desc ;")
 				or die(mysql_error());
 				
 				$_SESSION["group"] = 0;
