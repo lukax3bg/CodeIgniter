@@ -123,6 +123,54 @@ class Board_Model extends CI_Model {
 		return true;
 		
     }
+	
+	public function hideNote($user, $note) 
+	{
+      	
+		$query="select * from personal_note where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+        if($result->num_rows()>0)
+		{
+			$query="delete from personal_note where idNote = ".$note.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			$query="delete from note where idNote = ".$note;
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			return true;
+		}
+		
+		$query="select * from changed_note where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+		 if($result->num_rows()>0)
+		{
+			$query="update changed_note set is_Hidden = 1 where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			 return true;
+		}
+		
+		$query="select * from group_note where idNote = ".$note;
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+		 if($result->num_rows()>0)
+		{
+			$query="INSERT INTO changed_note (idNote, idUser, text, is_Hidden) VALUES (".$note.", ".$user.", \" \", 1);";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			 return true;
+		}
+		
+		return false;	
+		
+    }
 }
 
 ?>

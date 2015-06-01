@@ -53,6 +53,8 @@ class User_Model extends CI_Model {
 				session_start();
 				$_SESSION["idUser"] = $idUser;
 				$_SESSION["ulogovan"] = "yes";
+				$_SESSION["group"]=0;
+				$_SESSION["cur"]=0;
 				return true;
 			}
 		}

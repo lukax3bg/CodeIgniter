@@ -631,6 +631,19 @@ max-width: 250px;
 	margin-top: 0px;
 }
 
+.close1 input[type=image]{
+	
+	content:url(../../images/x.png);
+}
+.close1 input[type=image]:hover{
+	
+	content:url(../../images/xh.png);
+}
+.close1 input[type=image]{
+	
+	content:url(../../images/x.png);
+}
+
 .post-info-rate-share input[type=submit]:hover{
 	opacity: 0.8;
 }
@@ -645,12 +658,12 @@ max-width: 250px;
 
 div.close1{
 margin-top:9px;
- content:url(../../images/x.png);
+ 
   }
   
 div.close1:hover{
 margin-top:9px;
- content:url(../../images/xh.png);
+ 
   }
 
 

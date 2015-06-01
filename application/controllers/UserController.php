@@ -136,7 +136,7 @@ class UserController extends CI_Controller {
             return false;
         };
 		//return true;*/
-		$this->load->view('home/homepage');
+		$this->load->view('home/homepage1');
   }
          
 }
