@@ -54,6 +54,7 @@ class BoardController extends CI_Controller {
 	public function editUser (){
       
       redirect('UserController/editUser');
+	   $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'rezultat'=>$result, 'idUser'=>$idUser));
 		//return true;
   }
         

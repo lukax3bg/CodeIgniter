@@ -49,7 +49,7 @@
 					</div>';*/
 					
 					echo '<li class="jedanNote">
-					<div class="close1"> <a href="';echo base_url()."#";echo '">';  echo '</a><</div>
+					<div class="close1"> <input type="submit" src="'; echo base_url()."/assets/images/psi.jpg"; echo '" alt="image"></div>
 						<div class="post-basic-info">
 						
 				        		<h3><a href="';echo base_url()."#";echo '">'; echo $naslov; echo '</a></h3>

@@ -5,9 +5,11 @@
 <div class="header">
 				<div class="wrap">
 				<div class="logo">
-					<a href="index.html"><img src="<?php echo base_url()."/assets/images/logo1.png"; ?>" title="pinbal" /></a>
+					<a href="index.html"><img src="<?php echo base_url()."/assets/images/logo1.png"; ?>" title="pinboard" /> </a>
 				</div>
+				
 				<div class="nav-icon">
+				<p>Pin<a href="#">Board</a></p>
 					 <a href="<?php echo base_url()."#"; ?>" class="right_bt" id="activator"><span> </span> </a>
 				</div>
 				 <div class="box" id="box">

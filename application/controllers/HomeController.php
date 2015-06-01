@@ -17,6 +17,10 @@ class HomeController extends CI_Controller {
 	public function homepage() {
 		$this->load->view('home/homepage');
 	}
+	
+	public function edituser() {
+		$this->load->view('users/edituser');
+	}
 }
 
 ?>

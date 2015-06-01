@@ -180,8 +180,29 @@ font-family: 'Raleway', 'Lato', Arial, sans-serif;
 	top: 0;
 	z-index: 999;
 }
+
 .logo{
 	float:left;
+	
+	
+}
+.nav-icon  p{
+	margin-left:-6%;
+	position:fixed;
+	color:#8C8C8C;
+	font-size:1.2em;
+}
+
+.nav-icon p a{
+	float:right;
+	color:#7D0552;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+}
+.nav-icon p a:hover{
+	color:#8C8C8C;
 }
 .logo img{
 	display:inline-block;
