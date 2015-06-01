@@ -39,7 +39,8 @@ font-family: 'Raleway', 'Lato', Arial, sans-serif;
 
 
 .logovanje {
-    /* size and position */
+
+
     width: 300px;
     margin: 200px auto 30px;
     padding: 10px;
@@ -59,12 +60,14 @@ font-family: 'Raleway', 'Lato', Arial, sans-serif;
 .logovanje input[type=text],
 .logovanje input[type=password] {
     /* Size and position */
-    width: 100%;
+	width: 100%;
     padding: 8px 4px 8px 10px;
     margin-bottom: 15px;
 
-    /* Styles */
-    border: 1px solid #4e3043; /* Fallback */
+  
+  
+    border: 1px solid #4e3043;
+	
     border: 1px solid rgba(78,48,67, 0.8);
     background: rgba(0,0,0,0.15);
     border-radius: 2px;
@@ -77,13 +80,16 @@ font-family: 'Raleway', 'Lato', Arial, sans-serif;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 
-    /* Font styles */
+  
+  
+	
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
     color: #fff;
     font-size: 13px;
 }
 
-/* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
+
+
 .grupe{
 float:left;
 
@@ -272,12 +278,16 @@ a{text-decoration:none;}
 .txt-rt{text-align:right;}/* text align right */
 .txt-lt{text-align:left;}/* text align left */
 .txt-center{text-align:center;}/* text align center */
-.float-rt{float:right;}/* float right */
-.float-lt{float:left;}/* float left */
+.float-rt{float:right;}
+
+
+.float-lt{float:left;}
+
 .clear{clear:both;}/* clear float */
-.pos-relative{position:relative;}/* Position Relative */
-.pos-absolute{position:absolute;}/* Position Absolute */
-.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.pos-relative{position:relative;}
+
+.pos-absolute{position:absolute;}/
+.vertical-base{	vertical-align:baseline;}
 .vertical-top{	vertical-align:top;}/* vertical align top */
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
@@ -530,7 +540,7 @@ a.boxclose{
 .footer p a:hover{
 	color:#8C8C8C;
 }
-/*----start-single-page----*/
+
 
 #main {
 	margin-top: 9em;
@@ -547,10 +557,6 @@ footer a {
   color: #435DC5;
   text-decoration: none;
 }
-
-/**
- * Progress bar for imagesLoaded
- */
 
 
 
