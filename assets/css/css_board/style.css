@@ -84,7 +84,11 @@ font-family: 'Raleway', 'Lato', Arial, sans-serif;
 }
 
 /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
+.grupe{
+float:left;
 
+
+}
 .logovanje input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
@@ -423,6 +427,20 @@ a.boxclose{
 	-moz-transition:0.5s all;
 	
 }
+.grupe1 h2 a{
+	color: #7E587E;
+	font-size: 1.2em;
+	margin-bottom: 0;
+	display: block;
+	
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	
+}
+
+.grupe1 h2 a:hover{
+	color:#717171;
+}
 
 .post-basic-info h3 a:hover{
 	color:#B9CB41;
@@ -541,6 +559,33 @@ body {
 /* /////////////////////////////////////////////////////////////////////////// 
 // Gallery
 /////////////////////////////////////////////////////////////////////////// */
+	.grupe{
+
+		width: 200px;
+		height:100%;
+		float: left;
+		padding:20px;
+		position: relative;
+		
+	background-color: #ffffff;
+	border: 1px solid #dedede;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	margin-left:10px;
+	margin-top:5px;
+	border-radius: 0.5em;
+	
+	
+	}
+	.grupe h2{
+	padding-left:15%;
+	margin-left:5px;
+	margin-top:5px;
+	
+	border-bottom: 1px solid rgba(183, 181, 181, 0.36);
+	}
+
 
 	.gallery {
 		list-style: none;
@@ -651,6 +696,20 @@ max-width: 250px;
 	padding: 6px;
 	margin-top: 0px;
 }
+.post-info-rate-share1 input[type=submit]{
+	width: 200px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 0px;
+}
 
 .close1 input[type=image]{
 	
@@ -673,6 +732,16 @@ max-width: 250px;
 	opacity: 0.6;
 }
 .post-info-rate-share input[type=submit]:focus{
+	outline: none;
+}
+.post-info-rate-share1 input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.post-info-rate-share1 input[type=submit]:active{
+	opacity: 0.6;
+}
+.post-info-rate-share1 input[type=submit]:focus{
 	outline: none;
 }
 
