@@ -519,6 +519,27 @@ display:inline-block;
 	-moz-transition:0.5s all;
 	
 }
+
+.grupe1 span{
+background:url(../../images/admin.png) no-repeat 0px 0px;
+	
+	height:18px;
+	width:20px;
+display:inline-block;
+
+
+
+}
+.grupe1 span:hover{
+background:url(../../images/adminH.png) no-repeat 0px 0px;
+	
+	height:18px;
+	width:20px;
+display:inline-block;
+
+
+
+}
 .grupe1 h2 a{
 	color: #7E587E;
 	font-size: 1.2em;

@@ -40,10 +40,12 @@
 									
 									
 									
+									
 									//echo '<div class="close2"><input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '"  alt="submit" > </div></h2>';
 				   		
 										echo '<h2><a href="'; echo base_url()."index.php/BoardController?id="; echo $idGrupa; echo '">'; echo $name; echo '</a></h2>';
 										//echo '<h2><a href="#">Animation films</a></h3>';
+										
 									
 								} 
 							?>
@@ -88,7 +90,7 @@
 										'
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
 										
-										
+										<span></span>
 										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div></h2>';	
 										
 										
