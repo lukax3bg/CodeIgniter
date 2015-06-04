@@ -27,7 +27,7 @@ class BoardController extends CI_Controller {
 			$imeUser = $row['nickname'];
 			$group = $_SESSION["group"];
 			if($group == 0){
-				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
+				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
 				or die(mysql_error());
 				
 				
@@ -56,7 +56,7 @@ class BoardController extends CI_Controller {
 			}
 			else
 			{
-				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 1 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 0 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc;")
+				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc;")
 				or die(mysql_error());
 				
 				/*
@@ -243,7 +243,7 @@ class BoardController extends CI_Controller {
 			$imeUser = $row['nickname'];
 			$group = $_SESSION["group"];
 			if($group == 0){
-				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
+				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
 				or die(mysql_error());
 				
 				$_SESSION["group"] = 0;
@@ -256,7 +256,7 @@ class BoardController extends CI_Controller {
 			}
 			else
 			{
-				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 1 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title, 0 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc;")
+				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE exists (select * from group_note gn where gn.idNote = n.idNote and gn.id_Group = ".$group." and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser."))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and gn.id_Group = ".$group." and cn.is_Hidden = 0 and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc;")
 				or die(mysql_error());
 				
 				$_SESSION["group"] = $group;
@@ -296,16 +296,41 @@ class BoardController extends CI_Controller {
   }
   public function stranicaEdit (){
       
-       if(!($_SESSION["ulogovan"]=="yes")){
-				redirect('HomeController/homepage');
-			};
-			$idUser = $_SESSION["idUser"];
+      $note=$this->input->post("idNote");
+	  $user = $_SESSION["idUser"];
+	  $idUser = $_SESSION["idUser"];
+	  $group = $_SESSION["group"];
 			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
 				mysqli_select_db($link, "mydb") or die(mysql_error());
 			$result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
 			$row = mysqli_fetch_assoc($result);
-			$imeUser = $row['nickname'];			
-            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/editpost', 'idUser'=>$idUser, 'ime'=>$imeUser));
+			$imeUser = $row['nickname'];
+			$this->load->model('Board_Model', 'board');
+			$podaci = $this->board->podaciZaEdit($user, $note);
+			
+            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/editpost', 'idUser'=>$idUser, 'gruop'=>$group, 'note'=>$note, 'ime'=>$imeUser, 'podaci'=>$podaci));
+  }
+  
+  public function editujNote (){
+      
+      $idNote=$this->input->post("idNote");
+	  $tabela=$this->input->post("tabela");
+	  $id_Group=$this->input->post("id_Group");
+	  $lock=$this->input->post("lock");
+	  $text=$this->input->post("text");
+	  
+	  
+	  $user = $_SESSION["idUser"];
+	  $group = $_SESSION["group"];
+			
+			$this->load->model('Board_Model', 'board');
+			if ($this->board->menjajNote($user, $idNote, $tabela, $id_Group, $lock, $text) == TRUE) {
+				redirect('BoardController?id='.$group);
+			} else {
+				redirect('BoardController');
+			};
+			
+           // $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/editpost', 'idUser'=>$idUser, 'gruop'=>$group, 'note'=>$note, 'ime'=>$imeUser, 'podaci'=>$podaci));
   }
 	
 	

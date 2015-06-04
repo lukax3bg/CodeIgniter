@@ -197,6 +197,133 @@ class Board_Model extends CI_Model {
 		
     }
 	
+	public function podaciZaEdit($user, $note) 
+	{
+      	$podaci = array(
+			'idNote'            => $note,
+			'tabela' => 0,
+			'title'        =>  "nesto",
+			'tekst'        =>  "nesto",
+			'id_Group'        =>  0,
+			'lock'        =>  0
+			); 
+			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+				mysqli_select_db($link, "mydb") or die(mysql_error());
+			$query="select * from personal_note where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+        if($result->num_rows()>0)
+		{
+			
+			$result = mysqli_query($link, "select * from note where idNote = ".$note.";")or die(mysql_error());	
+			$row = mysqli_fetch_assoc($result);
+			
+			$podaci['tabela'] = 0;
+			$podaci['title'] = $row['title'];
+			$podaci['text'] = $row['text'];
+			$podaci['idGroup'] = 0;
+			$podaci['lock'] = 0;
+			
+			
+			return $podaci;
+		}
+		
+		$query="select * from changed_note where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+		 if($result->num_rows()>0)
+		{
+			$result = mysqli_query($link, "select * from changed_note where idNote = ".$note." and idUser = ".$user.";")or die(mysql_error());
+			$row = mysqli_fetch_assoc($result);
+			$podaci['text'] = $row['text'];
+			
+			$result = mysqli_query($link, "select * from note where idNote = ".$note.";")or die(mysql_error());	
+			$row = mysqli_fetch_assoc($result);
+			
+			$podaci['tabela'] = -1;
+			$podaci['title'] = $row['title'];
+			
+			$podaci['idGroup'] = 0;
+			$podaci['lock'] = 0;
+			
+			
+			
+			return $podaci;
+		}
+		
+		$query="select * from group_note where idNote = ".$note;
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+		 if($result->num_rows()>0)
+		{
+			
+			$result = mysqli_query($link, "select * from group_note where idNote = ".$note.";")or die(mysql_error());
+			$row = mysqli_fetch_assoc($result);
+			$podaci['lock'] = $row['is_Locked'];
+			$podaci['idGroup'] = $row['id_Group'];
+			
+			$result = mysqli_query($link, "select * from note where idNote = ".$note.";")or die(mysql_error());	
+			$row = mysqli_fetch_assoc($result);
+			
+			$podaci['tabela'] = 1;
+			$podaci['title'] = $row['title'];
+			$podaci['text'] = $row['text'];
+			
+			
+			
+			
+			
+			return $podaci;
+			
+			/*$query="INSERT INTO changed_note (idNote, idUser, text, is_Hidden) VALUES (".$note.", ".$user.", \" \", 1);";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			 return true;*/
+		}
+		
+		return false;		
+		
+    }
+	
+	public function menjajNote($user, $idNote, $tabela, $id_Group, $lock, $text) 
+	{
+	$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+				mysqli_select_db($link, "mydb") or die(mysql_error());
+      	if($tabela == 0)
+		{
+			$result = mysqli_query($link, "update note set text = \"".$text."\" where idNote = ".$idNote.";")or die(mysql_error());
+			$result = mysqli_query($link, "update note set created_On = NOW() where idNote = ".$idNote.";")or die(mysql_error());
+			//$row = mysqli_fetch_assoc($result);
+			return true;
+		}
+		else if($tabela == -1)
+		{
+			$result = mysqli_query($link, "update changed_note set text = \"".$text."\" where idNote = ".$idNote." and idUser = ".$user.";")or die(mysql_error());
+			//$row = mysqli_fetch_assoc($result);
+			return true;
+		}
+		else
+		{
+			if($lock == 0)
+			{
+				$result = mysqli_query($link, "update note set text = \"".$text."\" where idNote = ".$idNote.";")or die(mysql_error());
+				$datum = date("Y-m-d H:i:s");
+				$result = mysqli_query($link, "update group_note set last_Edited_on = NOW() where idNote = ".$idNote.";")or die(mysql_error());
+				$result = mysqli_query($link, "update group_note set last_Editor = ".$user." where idNote = ".$idNote.";")or die(mysql_error());
+				return true;
+			}
+			else
+			{
+				$result = mysqli_query($link, "INSERT INTO changed_note (idNote, idUser, text, is_Hidden) VALUES (".$idNote.", ".$user.", \"".$text."\", '0');");
+				return true;
+			}
+		}
+			return false;
+    }
+	
 	
 }
 		

@@ -225,7 +225,7 @@
 									<div class="oceni">
 										<span>';echo form_open('BoardController/favNote'); echo  
 						
-						'<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="';
+										'<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="';
 										if($fav == 0)
 										{
 											echo base_url()."assets/images/zvezdicaSiva.png";
@@ -239,7 +239,9 @@
 										
 									</div>
 									<span id="qwe"> <input type="image" src="'; echo base_url()."/assets/images/lock.png"; echo '" name="hide" value="'; ; echo '" alt="submit" ></span>
-									<span id="qwer"> <input type="image" src="'; echo base_url()."/assets/images/edit.png"; echo '" name="hide" value="';  echo '" alt="submit" ></span>
+									<span id="qwer">'; echo form_open('BoardController/stranicaEdit'); echo  
+						
+										'<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="'; echo base_url()."/assets/images/edit.png"; echo'" name="fav" value="';echo $note;  echo '" alt="submit" ></form></span>
 									<div class="post-share">
 										<span> </span>
 									</div>
