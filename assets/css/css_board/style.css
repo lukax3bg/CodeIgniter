@@ -380,6 +380,11 @@ a.boxclose{
 	width: 15%;
 	margin-top: 0.3em;
 }
+#slikapr img{
+width:43px;
+height:43px;
+display:inline-block;
+}
 .user ul li{
 	display:inline-block;
 }
