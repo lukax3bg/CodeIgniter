@@ -306,7 +306,7 @@ class BoardController extends CI_Controller {
 			  $group = $_SESSION["group"];
 			  
 			 $this->load->model('Group_Model', 'grM');
-				if ($this->grM->makeAdmin($user, $group) == TRUE) {
+				if ($this->grM->makeAdmin($group, $user) == TRUE) {
 					redirect('BoardController?id='.$group);
 				} else {
 					redirect('BoardController');

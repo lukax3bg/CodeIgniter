@@ -148,13 +148,15 @@ class Group_Model extends CI_Model {
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
+			return true;
 			}
-			else
+			else if ($row['is_Admin']==1)
 			{
 				$query="update ismember set is_Admin = 0 where id_User = ".$user." and id_Group = ".$idGroup." ;";
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
+			return true;
 			}
 			
 			
