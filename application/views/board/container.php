@@ -85,20 +85,20 @@
 										
 										
 										echo '
-										<div class="close2">';echo form_open('BoardController/make_Admin'); echo  
+										<div class="close2">';echo form_open('BoardController/ban_User'); echo  
 										
 										'
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
 										
-										<input type="image" src="'; echo base_url()."/assets/images/admin.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></div></form>';
+										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></div></form>';
 										
 										
-										echo form_open('BoardController/ban_User'); echo  
+										 echo  
 										
-										'<div class="close2">
+										'<div class="close2">';echo form_open('BoardController/make_Admin'); echo'
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
 										
-										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div>';	
+										<input type="image" src="'; echo base_url()."/assets/images/admin.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div>';	
 										
 										
 										
