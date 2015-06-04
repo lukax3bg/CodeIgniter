@@ -151,19 +151,6 @@ class UserController extends CI_Controller {
 			$imeUser = $row['nickname'];			
             $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser, 'ime'=>$imeUser));
   }
-   public function editPost (){
-      
-       if(!($_SESSION["ulogovan"]=="yes")){
-				redirect('HomeController/homepage');
-			};
-			$idUser = $_SESSION["idUser"];
-			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
-			$result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
-			$row = mysqli_fetch_assoc($result);
-			$imeUser = $row['nickname'];			
-            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/editpost', 'idUser'=>$idUser, 'ime'=>$imeUser));
-  }
   
   
   public function changeMail()

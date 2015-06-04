@@ -23,24 +23,16 @@
                     <div class="izmenaProfila">
                        
                     <?php echo form_open('UserController/changeMail');?>
-				        <label >E-mail</label>
+				        <label >Title</label>
 						
-				        <input type="text" placeholder="email" name="email" >
-						<input type="submit" name="submit" value="Promeni mail">
+				        <input type="text" placeholder="Title" name="title" >
+						<div class="unesiNotes">
+						<textarea  name="text"> </textarea>
+						</div>
+						<input type="submit" name="submit" value="Promeni note!">
 						</form>
 						
-						<?php echo form_open('UserController/changePass');?>
-				        <label >Old password</label>
-				        <input type="password" placeholder="password" name="password"> 
-				    
-					
-				        <label for="password">New Password</label>
-				        <input type="password" placeholder="new-password" name="new-password"> 
-				   
-				        <label for="password">Repeat password</label>
-				        <input type="password" placeholder="re-password" name="re-password"> 
-				    
-				        <input type="submit" name="submit" value="Promeni sifru">
+						
 				       
                         </form>
                     </div>
