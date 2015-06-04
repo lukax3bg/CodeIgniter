@@ -65,7 +65,7 @@ class Group_Model extends CI_Model {
 		
 		
 		
-		return true;
+		return $idGroup;
 		
     }
 	
