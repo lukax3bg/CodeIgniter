@@ -238,8 +238,8 @@
 										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </form></span>
 										
 									</div>
-									<span id="qwe"> </span>
-									<span id="qwer"> </span>
+									<span id="qwe"> <input type="image" src="'; echo base_url()."/assets/images/lock.png"; echo '" name="hide" value="'; ; echo '" alt="submit" ></span>
+									<span id="qwer"> <input type="image" src="'; echo base_url()."/assets/images/edit.png"; echo '" name="hide" value="';  echo '" alt="submit" ></span>
 									<div class="post-share">
 										<span> </span>
 									</div>
