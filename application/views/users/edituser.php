@@ -13,15 +13,39 @@
 </head>
 
 <body>
+					
 
+					
+					
+					
     
        <div class="ograda">
+	   
         <div class="profil">
             <div class="profil1">
                 <div class="pozicijaprofil">
                     <img class="slikaDim" src="<?php echo base_url()."/assets/images/pic10.jpg"; ?>" >
                     <div class="izmenaProfila">
-                       
+					
+					
+				
+				<?php echo form_open_multipart('upload/do_upload');?>
+					<div class="upload1">
+					<input type="file" name="userfile" size="20" width="10px" />
+					</div>
+					<br /><br />
+
+					<input type="submit" value="upload" />
+
+					</form>
+					
+
+					
+
+
+						
+						
+
                     <?php echo form_open('UserController/changeMail');?>
 				        <label >E-mail</label>
 						
