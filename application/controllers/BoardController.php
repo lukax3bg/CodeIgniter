@@ -207,7 +207,7 @@ class BoardController extends CI_Controller {
     
 	public function ban_User() {
 			
-			 $user=$this->input->post("user");
+			  $user=$this->input->post("user");
 			  $group = $_SESSION["group"];
 			  
 			 $this->load->model('Group_Model', 'grM');
@@ -218,7 +218,19 @@ class BoardController extends CI_Controller {
 				};
 			
 	}
-	
+	public function make_Admin() {
+			
+			  $user=$this->input->post("user");
+			  $group = $_SESSION["group"];
+			  
+			 $this->load->model('Group_Model', 'grM');
+				if ($this->grM->makeAdmin($user, $group) == TRUE) {
+					redirect('BoardController?id='.$group);
+				} else {
+					redirect('BoardController');
+				};
+			
+	}
 	
 	public function search(){
 		
