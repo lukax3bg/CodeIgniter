@@ -18,7 +18,7 @@ class Upload extends CI_Controller {
 
 		$config['upload_path'] = 'assets/images/uploads/';
 		$config['allowed_types'] = 'png|jpg|gif';
-		$config['max_size']	= '100';
+		$config['max_size']	= '10000';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
 		$new_name = time();
@@ -42,8 +42,8 @@ class Upload extends CI_Controller {
 			$result = $this->db->query($query,$arg) or die(mysql_error());
 			
 			$data = array('upload_data' => $this->upload->data());
-
-			$this->load->view('users/edituser', $data);
+			redirect('UserController/edituser');
+			//$this->load->view('users/edituser', $data);
 			
 		}
 	}

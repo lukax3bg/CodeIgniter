@@ -25,6 +25,7 @@ class BoardController extends CI_Controller {
 			$result = $result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
 			$row = mysqli_fetch_assoc($result);
 			$imeUser = $row['nickname'];
+			$linkSl = $row['link_Photo'];
 			$group = $_SESSION["group"];
 			if($group == 0){
 				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
@@ -74,7 +75,7 @@ class BoardController extends CI_Controller {
 			$grupe = $this->grM->grupe($idUser);
 			$users = $this->grM->users($_SESSION["group"]);
 			$is_Admin = $this->grM->isAdmin($_SESSION["group"]);
-			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => ""));
+			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => "", 'slika'=>$linkSl));
             //$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser));
 			//$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser));
 			
@@ -241,6 +242,7 @@ class BoardController extends CI_Controller {
 			$result = $result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
 			$row = mysqli_fetch_assoc($result);
 			$imeUser = $row['nickname'];
+			$linkSl = $row['link_Photo'];
 			$group = $_SESSION["group"];
 			if($group == 0){
 				$result = mysqli_query($link, "SELECT idNote, created_On, text, title, 1 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 1 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT idNote, created_On, text, title, 0 as fav FROM note n WHERE (exists (select * from personal_note pn where pn.idNote = n.idNote AND pn.idUser = ".$idUser.") or exists (select * from group_note gn where gn.idNote = n.idNote and exists (select * from ismember im where im.id_Group = gn.id_Group AND im.id_User = ".$idUser." and not exists (select * from changed_note cn where cn.idNote = gn.idNote AND cn.idUser=".$idUser.")))) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") UNION SELECT n.idNote, gn.last_Edited_On, cn.text, n.title, 0 as fav from Note n, changed_note cn, group_note gn where (n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = ".$idUser." and cn.is_Hidden = 0) and not exists (select * from favourite f where f.idNote = n.idNote and f.idUser = ".$idUser.") ORDER BY fav desc, created_On desc")
@@ -270,11 +272,11 @@ class BoardController extends CI_Controller {
 			$users = $this->grM->users($_SESSION["group"]);
 			$is_Admin = $this->grM->isAdmin($_SESSION["group"]);
 			if (($arg != "") && ($arg != NULL)){
-			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>1, 'arg' => $arg));
+			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>1, 'arg' => $arg, 'slika'=>$linkSl));
 			}
 			else
 			{
-				$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => ""));
+				$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => "", 'slika'=>$linkSl));
 			}//$this->load->view('board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>1, 'arg' => $arg);
 	
 		

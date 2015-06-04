@@ -148,8 +148,9 @@ class UserController extends CI_Controller {
 				mysqli_select_db($link, "mydb") or die(mysql_error());
 			$result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
 			$row = mysqli_fetch_assoc($result);
-			$imeUser = $row['nickname'];			
-            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser, 'ime'=>$imeUser));
+			$imeUser = $row['nickname'];	
+			$linkSl = $row['link_Photo'];
+            $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser, 'ime'=>$imeUser, 'slika'=>$linkSl));
   }
   
   

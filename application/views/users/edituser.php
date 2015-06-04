@@ -24,7 +24,7 @@
         <div class="profil">
             <div class="profil1">
                 <div class="pozicijaprofil">
-                    <img class="slikaDim" src="<?php echo base_url()."/assets/images/pic10.jpg"; ?>" >
+                    <img class="slikaDim" src="<?php echo base_url()."/assets/images/uploads/".$slika; ?>" >
                     <div class="izmenaProfila">
 					
 					

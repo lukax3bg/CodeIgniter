@@ -23,7 +23,7 @@
 					<div class="user">
 						<ul>
 							<?php echo form_open('UserController/logout');  ?> <input type="submit"  name="submit" value=""  class="right_bt" id="activator" /><span> </span> </a></form>
-							<li><a href="<?php echo base_url()."index.php/BoardController/editUser"; ?>"><img src="<?php echo base_url()."/assets/images/user-pic.png"; ?>" title="user-name" /><span><?php echo $ime; ?></span></a></li>
+							<li><a href="<?php echo base_url()."index.php/BoardController/editUser"; ?>"><img src="<?php echo base_url()."/assets/images/uploads/".$slika; ?>" title="user-name" /><span><?php echo $ime; ?></span></a></li>
 
 							
 
