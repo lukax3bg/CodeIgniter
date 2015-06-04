@@ -222,7 +222,7 @@
 							
 							<div class="post-info-rate-share">
 									<div class="oceni">
-										<span> </span>
+										<span> </span><span id="qwe"></span>
 									</div>
 									<div class="post-share">
 										<span> </span>
