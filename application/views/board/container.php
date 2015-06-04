@@ -222,10 +222,10 @@
 								</div>
 							
 							<div class="post-info-rate-share">
-									<div class="oceni">';echo form_open('BoardController/favNote'); echo  
+									<div class="oceni">
+										<span>';echo form_open('BoardController/favNote'); echo  
 						
-						'
-										<span><input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="';
+						'<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="';
 										if($fav == 0)
 										{
 											echo base_url()."assets/images/zvezdicaSiva.png";
@@ -235,8 +235,8 @@
 											echo base_url()."assets/images/zvezdica.png";
 										}
 										
-										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </span>
-										</form>
+										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </form></span>
+										
 									</div>
 									<span id="qwe"> </span>
 									<span id="qwer"> </span>

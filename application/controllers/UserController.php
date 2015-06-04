@@ -81,7 +81,7 @@ class UserController extends CI_Controller {
               
               //KORISNIK JE USPESNO DODAT U BAZU  
               $data['usernameR']=$user;
-              $this->load->view("home/success_signUp",$data);
+              redirect('BoardController');
               
           }else {
               echo "Izninjavamo se trenutno ne mozemo obraditi vas zahtev,pokusajte ponovo";
