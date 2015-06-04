@@ -15,7 +15,7 @@
 				        	  
 				<div class="top-searchbar">
 					<?php echo form_open('BoardController/search');  ?>
-						<input type="text"	placeholder = "Search ..." name="arg"/><input type="submit" name="submit" value="Search" />
+						<input type="text"	placeholder = "Search ..." name="arg"/><input type="submit" name="submit" value="" />
 					</form>
 				</div>
 				<div class="userinfo">
