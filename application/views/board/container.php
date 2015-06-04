@@ -85,13 +85,20 @@
 										
 										
 										echo '
-										<div class="close2">';echo form_open('BoardController/ban_User'); echo  
+										<div class="close2">';echo form_open('BoardController/make_Admin'); echo  
 										
 										'
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
 										
-										<span></span>
-										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div></h2>';	
+										<input type="image" src="'; echo base_url()."/assets/images/admin.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></div></form>';
+										
+										
+										echo form_open('BoardController/ban_User'); echo  
+										
+										'<div class="close2">
+										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
+										
+										<input type="image" src="'; echo base_url()."/assets/images/x.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div>';	
 										
 										
 										
@@ -202,6 +209,7 @@
 					$naslov = $row['title'];
 					$note = $row['idNote'];
 					$fav = $row['fav'];
+					$slika = $linkovi["'".$note."'"];
 					
 					$textL = strtolower($text);
 					$naslovL = strtolower($naslov);
@@ -245,7 +253,7 @@
 						
 										'<input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="'; echo base_url()."/assets/images/edit.png"; echo'" name="fav" value="';echo $note;  echo '" alt="submit" ></form></span>
 									<div class="post-share">
-										<span> </span>
+										<span><img src="'; echo base_url()."/assets/images/uploads/".$slika; echo '" title="" /> </span>
 									</div>
 									<div class="clear"> </div>
 								</div>
