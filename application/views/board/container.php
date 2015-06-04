@@ -176,7 +176,7 @@
 			        		<input type="text" placeholder="title" width="200px;" name="title"><br>
 						</div>
 						<div class="unesiNotes">
-							<textarea  name="text"> </textarea>
+							<textarea  name="text" > </textarea>
 							
 						</div>
 			        		<div class="post-info-rate-share">
