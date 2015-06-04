@@ -134,7 +134,35 @@ class Group_Model extends CI_Model {
 		return true;
     }
 	
+	public function makeAdmin($idGroup, $user){
+				$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+				mysqli_select_db($link, "mydb") or die(mysql_error());
 	
+			$resultat = mysqli_query($link, "select is_Admin from ismember where id_User = ".$user." and id_Group = ".$idGroup." ;")
+				or die(mysql_error());
+			$row = mysqli_fetch_assoc($result);
+			
+			if($row['is_Admin']==0)
+			{
+				$query="update ismember set is_Admin = 1 where id_User = ".$user." and id_Group = ".$idGroup." ;";
+			
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			}
+			else
+			{
+				$query="update ismember set is_Admin = 0 where id_User = ".$user." and id_Group = ".$idGroup." ;";
+			
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+			}
+			
+			
+	
+	
+	
+	
+	}
 	
 	
 }
