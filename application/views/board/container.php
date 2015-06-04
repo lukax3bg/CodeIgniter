@@ -235,9 +235,11 @@
 											echo base_url()."assets/images/zvezdica.png";
 										}
 										
-										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </span><span id="qwe"></span>
+										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </span>
 										</form>
 									</div>
+									<span id="qwe"> </span>
+									<span id="qwer"> </span>
 									<div class="post-share">
 										<span> </span>
 									</div>

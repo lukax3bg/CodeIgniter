@@ -424,24 +424,31 @@ a.boxclose{
 	background-position:center;
 	 
 }
-.oceni span{
+.oceni {
 	height:18px;
 	width:20px;
-	background:url(../../images/zvezdicaSiva.png) no-repeat 0px 0px; 
+	
 	display:inline-block;
 }
-.oceni span:hover{
-	background:url(../../images/zvezdica.png) no-repeat 0px 0px; 
+.oceni:hover{
+background-image:url(../../images/zvezdica.png) no-repeat 0px 0px;
+	
+}
+.oceni input[type=image]:hover{
+	
+	 background-image:url(../../images/zvezdica.png);
 }
 #qwe{
 
 background:url(../../images/lock.png) no-repeat 0px 0px;
-	
+	margin-top:4px;
+	float:left;
 	height:18px;
 	width:20px;
 display:inline-block;
 
 }
+
 #qwe:hover{
 
 background:url(../../images/lockH.png) no-repeat 0px 0px;
@@ -449,6 +456,29 @@ background:url(../../images/lockH.png) no-repeat 0px 0px;
 	height:18px;
 	width:20px;
 display:inline-block;
+
+}
+#qwer{
+	
+	background:url(../../images/edit.png) no-repeat 0px 0px;
+	margin-top:3px;
+	height:18px;
+	width:20px;
+display:inline-block;
+
+
+
+}
+#qwer:hover{
+	
+	background:url(../../images/editH.png) no-repeat 0px 0px;
+	margin-top:3px;
+	height:18px;
+	width:20px;
+	display:inline-block;
+	
+
+
 
 }
 /*<input type="checkbox" name="thing" value="valuable" id="thing"/><label for="thing"></label>
