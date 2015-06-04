@@ -276,6 +276,20 @@ class BoardController extends CI_Controller {
 		
 	}
 	
+	public function favNote (){
+      $note=$this->input->post("idNote");
+	  $user = $_SESSION["idUser"];
+	  
+	  $this->load->model('Board_Model', 'board');
+			if ($this->board->favNote($user, $note) == TRUE) {
+				redirect('BoardController');
+			} else {
+				redirect('BoardController');
+			};
+      
+		//return true;
+  }
+	
 	
 	
 	

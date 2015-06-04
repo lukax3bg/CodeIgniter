@@ -199,6 +199,7 @@
 					$datum = $row['created_On'];
 					$naslov = $row['title'];
 					$note = $row['idNote'];
+					$fav = $row['fav'];
 					
 					$textL = strtolower($text);
 					$naslovL = strtolower($naslov);
@@ -221,8 +222,21 @@
 								</div>
 							
 							<div class="post-info-rate-share">
-									<div class="oceni">
-										<span><input type="image" src="'; echo base_url()."/assets/images/zvezdicaSiva.png"; echo '" name="hide" value="'; echo '" alt="submit" >';echo ' </span><span id="qwe"></span>
+									<div class="oceni">';echo form_open('BoardController/favNote'); echo  
+						
+						'
+										<span><input type="hidden" placeholder="idNote" name="idNote" value='; echo $note; echo '> <input type="image" src="';
+										if($fav == 0)
+										{
+											echo base_url()."assets/images/zvezdicaSiva.png";
+										}
+										else
+										{
+											echo base_url()."assets/images/zvezdica.png";
+										}
+										
+										echo'" name="fav" value="';echo $note;  echo '" alt="submit" >';echo ' </span><span id="qwe"></span>
+										</form>
 									</div>
 									<div class="post-share">
 										<span> </span>

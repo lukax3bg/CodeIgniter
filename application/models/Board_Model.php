@@ -171,6 +171,33 @@ class Board_Model extends CI_Model {
 		return false;	
 		
     }
+	
+	public function favNote($user, $note) 
+	{
+      	
+		$query="select * from favourite where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());
+		
+        if($result->num_rows()>0)
+		{
+			$query="delete from favourite where idNote = ".$note." and idUser = ".$user.";";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());			
+			return true;
+		}
+		else
+		{
+			$query="insert into favourite (idNote, idUser) values (".$note.", ".$user.");";
+			$arg=array();
+			$result = $this->db->query($query,$arg) or die(mysql_error());			
+			return true;
+		}
+		return false;	
+		
+    }
+	
+	
 }
 		
 
