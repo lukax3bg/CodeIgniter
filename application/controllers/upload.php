@@ -17,12 +17,15 @@ class Upload extends CI_Controller {
 	{				
 
 		$config['upload_path'] = 'assets/images/uploads/';
-		$config['allowed_types'] = 'png';
+		$config['allowed_types'] = 'png|jpg|gif';
 		$config['max_size']	= '100';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
 		$new_name = time();
 		$config['file_name'] = $new_name;
+		
+		$path = $_FILES['userfile']['name'];
+		$ext = pathinfo($path, PATHINFO_EXTENSION);
 		
 		$this->load->library('upload', $config);
 		
@@ -34,7 +37,7 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$query="update user set link_Photo = \"".$new_name."\" where idUser = ".$_SESSION['idUser'].";";
+			$query="update user set link_Photo = \"".$new_name.".".$ext."\" where idUser = ".$_SESSION['idUser'].";";
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
 			

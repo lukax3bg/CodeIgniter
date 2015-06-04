@@ -31,11 +31,11 @@
 				
 				<?php echo form_open_multipart('upload/do_upload');?>
 					<div class="upload1">
-					<input type="file" name="userfile" size="20" width="10px" />
+					<input type="file" name="userfile"  size="20" width="10px" />
 					</div>
 					<br /><br />
 
-					<input type="submit" value="upload" />
+					<input type="submit" value="upload"  />
 
 					</form>
 					
