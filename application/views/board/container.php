@@ -222,7 +222,7 @@
 							
 							<div class="post-info-rate-share">
 									<div class="oceni">
-										<span> </span><span id="qwe"></span>
+										<span><input type="image" src="'; echo base_url()."/assets/images/zvezdicaSiva.png"; echo '" name="hide" value="'; echo '" alt="submit" >';echo ' </span><span id="qwe"></span>
 									</div>
 									<div class="post-share">
 										<span> </span>

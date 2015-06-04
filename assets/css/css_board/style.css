@@ -409,7 +409,7 @@ a.boxclose{
 /*--//userinfo--*/
 /*----start-post-grids----*/
 .post-share span{
-	background:url(../../images/user-pic.png) no-repeat -7px 0px;
+	
 	height:28px;
 	background-position:center;
 	width:30px;
@@ -421,6 +421,8 @@ a.boxclose{
 }
 .post-share span:hover{
 	background:url(../../images/user-pic.png) no-repeat -7px 0px;
+	background-position:center;
+	 
 }
 .oceni span{
 	height:18px;
