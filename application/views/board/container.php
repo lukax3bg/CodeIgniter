@@ -85,7 +85,11 @@
 										
 										
 										echo '
+<<<<<<< HEAD
 										<div class="close2">';echo form_open('BoardController/ban_User'); echo  
+=======
+										<div class="close2" class="close3">';echo form_open('BoardController/make_Admin'); echo  
+>>>>>>> origin/master
 										
 										'
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
@@ -95,7 +99,11 @@
 										
 										 echo  
 										
+<<<<<<< HEAD
 										'<div class="close2">';echo form_open('BoardController/make_Admin'); echo'
+=======
+										'<div class="close2" class="close3">
+>>>>>>> origin/master
 										<input type="hidden" placeholder="user" name="user" value='; echo $userID; echo '>
 										
 										<input type="image" src="'; echo base_url()."/assets/images/admin.png"; echo '" name="hide" value="'; echo $nick; echo '" alt="submit" ></form></div>';	
