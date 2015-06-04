@@ -98,6 +98,10 @@ class BoardController extends CI_Controller {
 			//$mail=$this->input->post("email");
 			$this->load->model('Board_Model', 'board');
 			$group = $_SESSION["group"];
+			if($group == -1)
+			{
+				$group = 0;
+			}
 			if ($this->board->dbInsert($user, $title, $text, $group) == TRUE) {
 				redirect('BoardController');
 			} else {
