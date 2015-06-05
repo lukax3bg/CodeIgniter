@@ -86,7 +86,7 @@ class Board_Model extends CI_Model {
 		return $this->db->insert_id();
 		*/
 		$post_data = array(
-        'idNote'            => '',
+        'idNote'            => NULL,
         'text' => $text,
         'created_On' => date("Y-m-d H:i:s"),
         'title'        =>  $title
