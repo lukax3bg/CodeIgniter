@@ -207,8 +207,8 @@ class Board_Model extends CI_Model {
 			'id_Group'        =>  0,
 			'lock'        =>  0
 			); 
-			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+			$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 			$query="select * from personal_note where idNote = ".$note." and idUser = ".$user.";";
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
@@ -290,8 +290,8 @@ class Board_Model extends CI_Model {
 	
 	public function menjajNote($user, $idNote, $tabela, $id_Group, $lock, $text) 
 	{
-	$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+	$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
       	if($tabela == 0)
 		{
 			$result = mysqli_query($link, "update note set text = \"".$text."\" where idNote = ".$idNote.";")or die(mysql_error());

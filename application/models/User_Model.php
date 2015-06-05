@@ -38,8 +38,8 @@ class User_Model extends CI_Model {
     
     public function login($nickname,$password) {
       		   
-		$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-		mysqli_select_db($link, "mydb") or die(mysql_error());
+		$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		$result = mysqli_query($link, "select * from user where nickname = \"".$nickname."\"")
                or die(mysql_error());
 		
@@ -96,8 +96,8 @@ class User_Model extends CI_Model {
     }
 	public function checkPass($user,$password) {
       		   
-		$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-		mysqli_select_db($link, "mydb") or die(mysql_error());
+		$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		$result = mysqli_query($link, "select * from user where idUser = \"".$user."\"")
                or die(mysql_error());
 		

@@ -144,8 +144,8 @@ class UserController extends CI_Controller {
 				redirect('HomeController/homepage');
 			};
 			$idUser = $_SESSION["idUser"];
-			$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+			$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 			$result = mysqli_query($link, "SELECT * from user where idUser = ".$idUser.";");	
 			$row = mysqli_fetch_assoc($result);
 			$imeUser = $row['nickname'];	

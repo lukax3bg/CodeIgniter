@@ -12,8 +12,8 @@ class Group_Model extends CI_Model {
     }
     
     public function grupe($idUser) {
-        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+       $link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		
 		$result = mysqli_query($link, "SELECT * FROM `group` g WHERE exists (select * from ismember im where im.id_User = ".$idUser." and g.idGroup = im.id_Group) ;")
 				or die(mysql_error());
@@ -28,8 +28,8 @@ class Group_Model extends CI_Model {
     }
 	
 	public function users($idGroup) {
-        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+        $link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		
 		$result = mysqli_query($link, "SELECT * FROM user u WHERE exists (select * from ismember im where im.id_Group = ".$idGroup." and u.idUser = im.id_User and u.idUser <> ".$_SESSION["idUser"].") ;")
 				or die(mysql_error());
@@ -39,8 +39,8 @@ class Group_Model extends CI_Model {
 		return $result;
     }
 	public function isAdmin($idGroup) {
-        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+      $link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		
 		$result = mysqli_query($link, "SELECT * FROM ismember  WHERE id_Group = ".$idGroup." and id_User = ".$_SESSION["idUser"]." ;")
 				or die(mysql_error());
@@ -156,8 +156,8 @@ class Group_Model extends CI_Model {
     }
 	
 	public function add_User($idGroup, $user) {
-        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+       $link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 				
 		$result = mysqli_query($link, "select * from user where nickname = \"".$user."\"")
 				or die(mysql_error());
@@ -175,8 +175,8 @@ class Group_Model extends CI_Model {
     }
 	
 	public function makeAdmin($idGroup, $user){
-				$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
-				mysqli_select_db($link, "mydb") or die(mysql_error());
+				$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 	
 			$resultat = mysqli_query($link, "select * from ismember where id_User = ".$user." and id_Group = ".$idGroup." ;")
 				or die(mysql_error());
