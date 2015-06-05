@@ -47,7 +47,7 @@ class User_Model extends CI_Model {
 		{
 			$idUser=$row['idUser'];
 			$pass = $row['password'];
-			
+			$isAdmin = $row['is_Admin'];
 			if($pass == $password)
 			{
 				session_start();
@@ -56,6 +56,7 @@ class User_Model extends CI_Model {
 				$_SESSION["group"]=0;
 				$_SESSION["cur"]=0;
 				$_SESSION["druga grupa"] = 0;
+				$_SESSION["isAdmin"] = $isAdmin;
 				return true;
 			}
 		}

@@ -17,6 +17,12 @@ class Group_Model extends CI_Model {
 		
 		$result = mysqli_query($link, "SELECT * FROM `group` g WHERE exists (select * from ismember im where im.id_User = ".$idUser." and g.idGroup = im.id_Group) ;")
 				or die(mysql_error());
+				
+		if($idUser == -1)
+		{
+			$result = mysqli_query($link, "SELECT * FROM `group` g;")
+				or die(mysql_error());
+		}
 		
 		return $result;
     }
@@ -27,6 +33,8 @@ class Group_Model extends CI_Model {
 		
 		$result = mysqli_query($link, "SELECT * FROM user u WHERE exists (select * from ismember im where im.id_Group = ".$idGroup." and u.idUser = im.id_User and u.idUser <> ".$_SESSION["idUser"].") ;")
 				or die(mysql_error());
+				
+				
 		
 		return $result;
     }
@@ -71,47 +79,79 @@ class Group_Model extends CI_Model {
 	
 	public function leaveGroup($user, $group) 
 	{
-      	
-		$query="DELETE changed_note
-				FROM changed_note
-				INNER JOIN group_note
-				ON changed_note.idNote = group_note.idNote AND 
-				group_note.id_Group = ".$group." AND 
-				changed_note.idUser = ".$user.";";
-			//delete from changed_note cn where cn.idUser = 1 and cn.idNote in (select tren_tabela.idNote from (select idNote from group_note gn where gn.id_Group = 6) tren_tabela);
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
-		
-		$query="delete from ismember where id_Group = ".$group." and id_User = ".$user.";";
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
-			
-		
-		$query="select * from ismember where id_Group = ".$group.";";
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
-		
-        if($result->num_rows()==0)
+      	if($user == -1)
 		{
-			$query="DELETE note FROM note INNER JOIN group_note ON note.idNote = group_note.idNote AND group_note.id_Group = ".$group.";";
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
+			$query="DELETE changed_note
+					FROM changed_note
+					INNER JOIN group_note
+					ON changed_note.idNote = group_note.idNote AND 
+					group_note.id_Group = ".$group.";";
+				//delete from changed_note cn where cn.idUser = 1 and cn.idNote in (select tren_tabela.idNote from (select idNote from group_note gn where gn.id_Group = 6) tren_tabela);
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			$query="delete from ismember where id_Group = ".$group.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+				
 			
 			$query="delete from group_note where id_Group = ".$group.";";
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
 			
 			$query="delete from `group` where idGroup = ".$group.";";
-			$arg=array();
-			$result = $this->db->query($query,$arg) or die(mysql_error());
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			
+			
 			
 			
 			return true;
 		}
-		
-		
-		
-		return true;	
+		else
+		{
+			$query="DELETE changed_note
+					FROM changed_note
+					INNER JOIN group_note
+					ON changed_note.idNote = group_note.idNote AND 
+					group_note.id_Group = ".$group." AND 
+					changed_note.idUser = ".$user.";";
+				//delete from changed_note cn where cn.idUser = 1 and cn.idNote in (select tren_tabela.idNote from (select idNote from group_note gn where gn.id_Group = 6) tren_tabela);
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			$query="delete from ismember where id_Group = ".$group." and id_User = ".$user.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+				
+			
+			$query="select * from ismember where id_Group = ".$group.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+			
+			if($result->num_rows()==0)
+			{
+				$query="DELETE note FROM note INNER JOIN group_note ON note.idNote = group_note.idNote AND group_note.id_Group = ".$group.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+				
+				$query="delete from group_note where id_Group = ".$group.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+				
+				$query="delete from `group` where idGroup = ".$group.";";
+				$arg=array();
+				$result = $this->db->query($query,$arg) or die(mysql_error());
+				
+				
+				return true;
+			}
+			
+			
+			
+			return true;
+		}	
 		
     }
 	
