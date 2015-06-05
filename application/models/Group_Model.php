@@ -64,7 +64,7 @@ class Group_Model extends CI_Model {
 		$email=$this->input->post('email');
 		
 		$post_data = array(
-        'idGroup'  => '',
+        'idGroup'  => NULL,
 		'name' =>  $title,
         'id_Creator' => $user,
         'created_On' => date("Y-m-d H:i:s"),
