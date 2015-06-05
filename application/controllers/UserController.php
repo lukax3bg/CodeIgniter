@@ -155,12 +155,15 @@ class UserController extends CI_Controller {
   }
   
   
-  public function changeMail()
+  
+  
+  
+  ppublic function changeMail()
   {
 	$this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_is_taken');
 	if($this->form_validation->run()!=true){
           $idUser = $_SESSION["idUser"];
-          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));
+          redirect('UserController/editUser');
       }else{
           
           $user = $_SESSION['idUser'];
@@ -170,7 +173,7 @@ class UserController extends CI_Controller {
           $this->user->changeMail($user,$mail);
 
 			$idUser = $_SESSION["idUser"];
-          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));	  
+          redirect('UserController/editUser');	  
       }
   }
   
@@ -183,7 +186,7 @@ class UserController extends CI_Controller {
 	
 	if($this->form_validation->run()!=true){
           $idUser = $_SESSION["idUser"];
-          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));
+          redirect('UserController/editUser');
       }else{
           
           $user = $_SESSION['idUser'];
@@ -193,7 +196,7 @@ class UserController extends CI_Controller {
           $this->user->changePass($user,$pass);
 
 			$idUser = $_SESSION["idUser"];
-          $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser));	  
+          redirect('UserController/editUser');	  
       }
 	
   }
