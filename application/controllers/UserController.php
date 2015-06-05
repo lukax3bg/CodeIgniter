@@ -158,7 +158,7 @@ class UserController extends CI_Controller {
   
   
   
-  ppublic function changeMail()
+  public function changeMail()
   {
 	$this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_is_taken');
 	if($this->form_validation->run()!=true){
