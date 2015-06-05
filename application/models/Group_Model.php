@@ -138,21 +138,22 @@ class Group_Model extends CI_Model {
 				$link = mysqli_connect("localhost", "root", "") or die(mysql_error());
 				mysqli_select_db($link, "mydb") or die(mysql_error());
 	
-			$resultat = mysqli_query($link, "select is_Admin from ismember where id_User = ".$user." and id_Group = ".$idGroup." ;")
+			$resultat = mysqli_query($link, "select * from ismember where id_User = ".$user." and id_Group = ".$idGroup." ;")
 				or die(mysql_error());
-			$row = mysqli_fetch_assoc($result);
+			$row = mysqli_fetch_assoc($resultat);
 			
-			if($row['is_Admin']==0)
+			if($row['is_Admin']==1)
 			{
-				$query="update ismember set is_Admin = 1 where id_User = ".$user." and id_Group = ".$idGroup." ;";
+				$query="update ismember set is_Admin = 0 where id_User = ".$user." and id_Group = ".$idGroup." ;";
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
 			return true;
 			}
-			else if ($row['is_Admin']==1)
+			else
 			{
-				$query="update ismember set is_Admin = 0 where id_User = ".$user." and id_Group = ".$idGroup." ;";
+				$query="update ismember set is_Admin = 1 where id_User = ".$user." and id_Group = ".$idGroup." ;";
+				
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
