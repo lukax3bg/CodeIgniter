@@ -225,7 +225,7 @@ class Board_Model extends CI_Model {
 			$podaci['idGroup'] = 0;
 			$podaci['lock'] = 0;
 			
-			
+			mysqli_close($link);
 			return $podaci;
 		}
 		
@@ -248,7 +248,7 @@ class Board_Model extends CI_Model {
 			$podaci['idGroup'] = 0;
 			$podaci['lock'] = 0;
 			
-			
+			mysqli_close($link);
 			
 			return $podaci;
 		}
@@ -274,7 +274,7 @@ class Board_Model extends CI_Model {
 			
 			
 			
-			
+			mysqli_close($link);
 			
 			return $podaci;
 			
@@ -283,7 +283,7 @@ class Board_Model extends CI_Model {
 			$result = $this->db->query($query,$arg) or die(mysql_error());
 			 return true;*/
 		}
-		
+		mysqli_close($link);
 		return false;		
 		
     }
@@ -297,12 +297,14 @@ class Board_Model extends CI_Model {
 			$result = mysqli_query($link, "update note set text = \"".$text."\" where idNote = ".$idNote.";")or die(mysql_error());
 			$result = mysqli_query($link, "update note set created_On = NOW() where idNote = ".$idNote.";")or die(mysql_error());
 			//$row = mysqli_fetch_assoc($result);
+			mysqli_close($link);
 			return true;
 		}
 		else if($tabela == -1)
 		{
 			$result = mysqli_query($link, "update changed_note set text = \"".$text."\" where idNote = ".$idNote." and idUser = ".$user.";")or die(mysql_error());
 			//$row = mysqli_fetch_assoc($result);
+			mysqli_close($link);
 			return true;
 		}
 		else
@@ -313,14 +315,17 @@ class Board_Model extends CI_Model {
 				$datum = date("Y-m-d H:i:s");
 				$result = mysqli_query($link, "update group_note set last_Edited_on = NOW() where idNote = ".$idNote.";")or die(mysql_error());
 				$result = mysqli_query($link, "update group_note set last_Editor = ".$user." where idNote = ".$idNote.";")or die(mysql_error());
+				mysqli_close($link);
 				return true;
 			}
 			else
 			{
 				$result = mysqli_query($link, "INSERT INTO changed_note (idNote, idUser, text, is_Hidden) VALUES (".$idNote.", ".$user.", \"".$text."\", '0');");
+				mysqli_close($link);
 				return true;
 			}
 		}
+		mysqli_close($link);
 			return false;
     }
 	
