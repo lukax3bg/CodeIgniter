@@ -57,9 +57,11 @@ class User_Model extends CI_Model {
 				$_SESSION["cur"]=0;
 				$_SESSION["druga grupa"] = 0;
 				$_SESSION["isAdmin"] = $isAdmin;
+				mysqli_close($link);
 				return true;
 			}
 		}
+		mysqli_close($link);
 		return false;
 		
     }
@@ -108,9 +110,11 @@ class User_Model extends CI_Model {
 			
 			if($pass == $password)
 			{
+				mysqli_close($link);
 				return true;
 			}
 		}
+		mysqli_close($link);
 		return false;
 		
     }

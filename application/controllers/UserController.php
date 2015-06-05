@@ -150,6 +150,7 @@ class UserController extends CI_Controller {
 			$row = mysqli_fetch_assoc($result);
 			$imeUser = $row['nickname'];	
 			$linkSl = $row['link_Photo'];
+			mysqli_close($link);
             $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'users/edituser', 'idUser'=>$idUser, 'ime'=>$imeUser, 'slika'=>$linkSl));
   }
   

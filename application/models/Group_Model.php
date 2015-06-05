@@ -12,7 +12,7 @@ class Group_Model extends CI_Model {
     }
     
     public function grupe($idUser) {
-       $link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
+				$link = mysqli_connect("eu-cdbr-azure-west-c.cloudapp.net", "b73d510bed34e9", "750055ad") or die(mysql_error());
 				mysqli_select_db($link, "CodeIgnAMqTCttrw") or die(mysql_error());
 		
 		$result = mysqli_query($link, "SELECT * FROM `group` g WHERE exists (select * from ismember im where im.id_User = ".$idUser." and g.idGroup = im.id_Group) ;")
@@ -24,7 +24,10 @@ class Group_Model extends CI_Model {
 				or die(mysql_error());
 		}
 		
+		mysqli_close($link);
+		
 		return $result;
+		
     }
 	
 	public function users($idGroup) {
@@ -35,7 +38,7 @@ class Group_Model extends CI_Model {
 				or die(mysql_error());
 				
 				
-		
+		mysqli_close($link);
 		return $result;
     }
 	public function isAdmin($idGroup) {
@@ -47,10 +50,12 @@ class Group_Model extends CI_Model {
 		if($row = mysqli_fetch_assoc($result))
 		{
 			$is_Admin = $row["is_Admin"];
+			mysqli_close($link);
 			return $is_Admin;
 			
 			
 		}
+		mysqli_close($link);
 		return 0;
     }
 	
@@ -170,7 +175,7 @@ class Group_Model extends CI_Model {
 			
 		}
 		
-		
+		mysqli_close($link);
 		return true;
     }
 	
@@ -188,6 +193,7 @@ class Group_Model extends CI_Model {
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
+			mysqli_close($link);
 			return true;
 			}
 			else
@@ -197,12 +203,14 @@ class Group_Model extends CI_Model {
 			
 			$arg=array();
 			$result = $this->db->query($query,$arg) or die(mysql_error());
+			mysqli_close($link);
 			return true;
+			
 			}
 			
 			
 	
-	
+	mysqli_close($link);
 	
 	
 	}

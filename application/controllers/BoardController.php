@@ -160,6 +160,7 @@ class BoardController extends CI_Controller {
 			$grupe = $this->grM->grupe($idUser);
 			$users = $this->grM->users($_SESSION["group"]);
 			$is_Admin = $this->grM->isAdmin($_SESSION["group"]);
+			mysqli_close($link);
 			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => "", 'slika'=>$linkSl, 'linkovi'=>$linkovi));
             //$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser));
 			//$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser));
@@ -474,10 +475,12 @@ class BoardController extends CI_Controller {
 			$users = $this->grM->users($_SESSION["group"]);
 			$is_Admin = $this->grM->isAdmin($_SESSION["group"]);
 			if (($arg != "") && ($arg != NULL)){
+				mysqli_close($link);
 			$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>1, 'arg' => $arg, 'slika'=>$linkSl, 'linkovi'=>$linkovi));
 			}
 			else
 			{
+				mysqli_close($link);
 				$this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>0, 'arg' => "", 'slika'=>$linkSl, 'linkovi'=>$linkovi));
 			}//$this->load->view('board/container', 'rezultat'=>$result, 'idUser'=>$idUser, 'grupe'=> $grupe, 'ime'=>$imeUser, 'korisnici' => $users, 'admin'=>$is_Admin, 'filter'=>1, 'arg' => $arg);
 	
@@ -493,6 +496,7 @@ class BoardController extends CI_Controller {
 			if ($this->board->favNote($user, $note) == TRUE) {
 				redirect('BoardController?id='.$group);
 			} else {
+				
 				redirect('BoardController');
 			};
       
@@ -511,7 +515,7 @@ class BoardController extends CI_Controller {
 			$imeUser = $row['nickname'];
 			$this->load->model('Board_Model', 'board');
 			$podaci = $this->board->podaciZaEdit($user, $note);
-			
+			mysqli_close($link);
             $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'board/editpost', 'idUser'=>$idUser, 'gruop'=>$group, 'note'=>$note, 'ime'=>$imeUser, 'podaci'=>$podaci));
   }
   
